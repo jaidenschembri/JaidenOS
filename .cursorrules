@@ -1,0 +1,72 @@
+{
+    "version": 1,
+    "project": {
+        "name": "Desktop OS Theme",
+        "description": "A customizable desktop operating system theme project that allows users to modify and personalize their desktop environment. This project focuses on creating a modern, user-friendly interface with customizable themes and components.",
+        "type": "desktop-application",
+        "tags": [
+            "desktop",
+            "theme",
+            "customization",
+            "ui",
+            "ux"
+        ],
+        "features": [
+            "Custom theme support",
+            "User interface customization",
+            "Desktop environment modifications",
+            "Theme switching capabilities",
+            "Modern UI components"
+        ],
+        "technologies": [
+            "Electron",
+            "React",
+            "TypeScript",
+            "CSS/SCSS"
+        ],
+        "structure": {
+            "src": "Source code and components",
+            "themes": "Theme definitions and assets",
+            "components": "Reusable UI components",
+            "styles": "Global styles and theme variables"
+        }
+    },
+    "editor": {
+        "formatOnSave": true,
+        "formatOnPaste": true,
+        "tabSize": 4,
+        "insertSpaces": true,
+        "wordWrap": "on",
+        "rulers": [100],
+        "trimTrailingWhitespace": true,
+        "insertFinalNewline": true
+    },
+    "ai": {
+        "autoComplete": true,
+        "chatHistory": true,
+        "codeActions": true,
+        "inlineSuggestions": true
+    },
+    "terminal": {
+        "integrated": {
+            "shell": {
+                "windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+            }
+        }
+    },
+    "files": {
+        "exclude": {
+            "**/node_modules": true,
+            "**/dist": true,
+            "**/build": true,
+            "**/.git": true,
+            "**/*.log": true,
+            "**/*.lock": true
+        },
+        "watcherExclude": {
+            "**/node_modules/**": true,
+            "**/dist/**": true,
+            "**/build/**": true
+        }
+    }
+} 
