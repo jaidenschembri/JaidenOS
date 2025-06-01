@@ -1,60 +1,130 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
+  import { WindowsSounds } from '$lib/utils';
+  
+  const dispatch = createEventDispatcher();
   
   export let x: number;
   export let y: number;
   
-  const dispatch = createEventDispatcher();
+  let showBackgroundSubmenu = false;
+  let submenuTimeout: ReturnType<typeof setTimeout> | null = null;
+  
+  // Predefined background images
+  const backgrounds = [
+    {
+      name: 'Clouds',
+      url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop'
+    },
+    {
+      name: 'Space',
+      url: 'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1920&h=1080&fit=crop'
+    },
+    {
+      name: 'Retro Grid',
+      url: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop'
+    },
+    {
+      name: 'Mountains',
+      url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop'
+    },
+    {
+      name: 'Default Pattern',
+      url: 'none' // Special case for default gradient
+    }
+  ];
   
   function handleRefresh(): void {
-    // Refresh desktop (could reload icons or update display)
-    window.location.reload();
+    WindowsSounds.playClickSound();
+    location.reload();
     dispatch('hide');
   }
   
   function handleProperties(): void {
-    // Show desktop properties (placeholder)
+    WindowsSounds.playClickSound();
     alert('Desktop Properties - Coming Soon!');
     dispatch('hide');
   }
   
-  function handleNewFolder(): void {
-    // Create new folder (placeholder)
-    alert('New Folder - Coming Soon!');
+  function changeBackground(backgroundUrl: string): void {
+    WindowsSounds.playClickSound();
+    
+    if (backgroundUrl === 'none') {
+      // Restore default gradient pattern
+      document.body.style.backgroundImage = `
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 2px, transparent 2px),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 2px, transparent 2px),
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%)
+      `;
+      document.body.style.backgroundSize = '40px 40px, 40px 40px, 20px 20px, 20px 20px';
+      document.body.style.backgroundPosition = '0 0, 20px 20px, 0 0, 10px 10px';
+      document.body.style.backgroundAttachment = 'scroll';
+    } else {
+      // Apply new background image
+      document.body.style.backgroundImage = `url("${backgroundUrl}")`;
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundAttachment = 'fixed';
+    }
+    
     dispatch('hide');
   }
   
-  function handleArrangeIcons(): void {
-    // Arrange icons (placeholder)
-    alert('Arrange Icons - Coming Soon!');
-    dispatch('hide');
+  function showSubmenu(): void {
+    if (submenuTimeout) {
+      clearTimeout(submenuTimeout);
+      submenuTimeout = null;
+    }
+    showBackgroundSubmenu = true;
+  }
+  
+  function hideSubmenu(): void {
+    submenuTimeout = setTimeout(() => {
+      showBackgroundSubmenu = false;
+    }, 100);
+  }
+  
+  function keepSubmenuOpen(): void {
+    if (submenuTimeout) {
+      clearTimeout(submenuTimeout);
+      submenuTimeout = null;
+    }
   }
 </script>
 
-<div 
-  class="desktop-context-menu" 
-  style="left: {x}px; top: {y}px;"
->
+<div class="desktop-context-menu" style="left: {x}px; top: {y}px;">
   <ul>
-    <li on:click={handleArrangeIcons}>
-      <span>📋</span>
-      Arrange Icons
-    </li>
     <li on:click={handleRefresh}>
       <span>🔄</span>
       Refresh
     </li>
+    
     <li class="menu-divider">
       <div class="divider"></div>
     </li>
-    <li on:click={handleNewFolder}>
-      <span>📁</span>
-      New
+    
+    <li class="submenu-parent" on:mouseenter={showSubmenu} on:mouseleave={hideSubmenu}>
+      <span>🖼️</span>
+      Change Background
       <span class="arrow">▸</span>
+      
+      {#if showBackgroundSubmenu}
+        <ul class="submenu" on:mouseenter={keepSubmenuOpen} on:mouseleave={hideSubmenu}>
+          {#each backgrounds as bg}
+            <li on:click={() => changeBackground(bg.url)}>
+              {bg.name}
+            </li>
+          {/each}
+        </ul>
+      {/if}
     </li>
+    
     <li class="menu-divider">
       <div class="divider"></div>
     </li>
+    
     <li on:click={handleProperties}>
       <span>⚙️</span>
       Properties
@@ -124,5 +194,48 @@
     background: #808080;
     margin: 0 4px;
     box-shadow: 0 1px 0 #fff;
+  }
+  
+  /* Submenu styles */
+  .submenu-parent {
+    position: relative;
+  }
+  
+  .submenu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #c0c0c0;
+    border: 2px solid #808080;
+    box-shadow: 
+      inset 1px 1px 0 #fff,
+      inset -1px -1px 0 #404040,
+      2px 2px 4px rgba(0, 0, 0, 0.3);
+    min-width: 120px;
+    z-index: 10001;
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+  }
+  
+  .submenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 2px 0;
+  }
+  
+  .submenu li {
+    display: flex;
+    align-items: center;
+    padding: 4px 12px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.1s ease, color 0.1s ease;
+    color: #000;
+    gap: 0;
+  }
+  
+  .submenu li:hover {
+    background: #0078d4;
+    color: white;
   }
 </style> 
