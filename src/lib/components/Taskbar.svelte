@@ -2,6 +2,7 @@
   import { onMount, createEventDispatcher } from 'svelte';
   import { windowsStore, focusWindow, openWindow } from '$lib/stores/windows';
   import { WindowsSounds } from '$lib/utils';
+  import { getAssetPath } from '$lib/utils/assets';
   
   const dispatch = createEventDispatcher();
   let time = '--:--';
@@ -56,7 +57,7 @@
   <div class="taskbar-left">
     <!-- Start Button -->
     <div class="start-button" class:active={startMenuOpen} id="start-btn" on:click={toggleStartMenu}>
-      <img src="/icons/windows.png" alt="Start Icon" />
+      <img src={getAssetPath('/icons/windows.png')} alt="Start Icon" />
       <span>Start</span>
     </div>
 
@@ -69,7 +70,7 @@
             class:active={!window.isMinimized}
             on:click={() => handleTaskbarAppClick(window.id)}
           >
-            <img src="/icons/folder-icon.png" alt={window.title} class="taskbar-icon-img" />
+            <img src={getAssetPath('/icons/folder-icon.png')} alt={window.title} class="taskbar-icon-img" />
             <span>{window.title}</span>
           </div>
         {/if}
@@ -79,7 +80,7 @@
 
   <!-- iPod toggle -->
   <button id="ipod-toggle-btn" title="Toggle iPod" on:click={toggleIpod} class:active={ipodVisible}>
-    <img src="/icons/audio-icon.png" alt="Toggle iPod" class="ipod-toggle-icon" />
+    <img src={getAssetPath('/icons/audio-icon.png')} alt="Toggle iPod" class="ipod-toggle-icon" />
   </button>
 
   <!-- Right-side Tray -->
@@ -87,13 +88,13 @@
     <div class="taskbar-icons">
       <!-- Social Media Icons -->
       <a href="https://x.com/jaiddog33" target="_blank" class="taskbar-icon" on:click={handleSystemTrayClick}>
-        <img src="/icons/twitter-icon.png" alt="Twitter" class="tray-icon" />
+        <img src={getAssetPath('/icons/twitter-icon.png')} alt="Twitter" class="tray-icon" />
       </a>
       <a href="https://www.instagram.com/jaidenschembri/" target="_blank" class="taskbar-icon" on:click={handleSystemTrayClick}>
-        <img src="/icons/instagram-icon.png" alt="Instagram" class="tray-icon" />
+        <img src={getAssetPath('/icons/instagram-icon.png')} alt="Instagram" class="tray-icon" />
       </a>
       <a href="https://www.twitch.tv/jaiddog28" target="_blank" class="taskbar-icon" on:click={handleSystemTrayClick}>
-        <img src="/icons/twitch-icon.png" alt="Twitch" class="tray-icon" />
+        <img src={getAssetPath('/icons/twitch-icon.png')} alt="Twitch" class="tray-icon" />
       </a>
     </div>
     <div class="taskbar-divider"></div>

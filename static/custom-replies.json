@@ -1,0 +1,26 @@
+[
+  {
+    "trigger": "hello|hi|hey",
+    "responses": ["yo.", "sup.", "what's good."]
+  },
+  {
+    "trigger": "how are you",
+    "responses": ["vibing in digital chaos. you?", "existing between 0s and 1s."]
+  },
+  {
+    "trigger": "thanks|thank you",
+    "responses": ["no need.", "it's whatever.", "vibe received."]
+  },
+  {
+    "trigger": "bye|goodbye|see you",
+    "responses": ["later.", "catch you in the void.", "peace."]
+  },
+  {
+    "trigger": "what.*time",
+    "responses": ["time is a construct.", "does it matter in the digital realm?", "check your taskbar."]
+  },
+  {
+    "trigger": "music|song|track",
+    "responses": ["check the ipod.", "vibes are in the player.", "sound is frequency."]
+  }
+] 

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import { windowsStore } from '$lib/stores/windows';
-  import WindowWrapper from '$lib/components/WindowWrapper.svelte';
+  import WindowWrapper from './WindowWrapper.svelte';
+  import { getAssetPath } from '$lib/utils/assets';
   
   const dispatch = createEventDispatcher();
   
@@ -34,51 +35,51 @@
       <div class="section">
         <h4 class="section-title">Graphics</h4>
         <div class="gallery-grid">
-          <img src="/icons/archive/graphics/bug.png">
-          <img src="/icons/archive/graphics/japan.png">
-          <img src="/icons/archive/graphics/jc.png">
-          <img src="/icons/archive/graphics/KING.png">
-          <img src="/icons/archive/graphics/storm.png">
-          <img src="/icons/archive/graphics/swag.png">
-          <img src="/icons/archive/graphics/vinylenvy1.png">
+          <img src={getAssetPath('/icons/archive/graphics/bug.png')}>
+          <img src={getAssetPath('/icons/archive/graphics/japan.png')}>
+          <img src={getAssetPath('/icons/archive/graphics/jc.png')}>
+          <img src={getAssetPath('/icons/archive/graphics/KING.png')}>
+          <img src={getAssetPath('/icons/archive/graphics/storm.png')}>
+          <img src={getAssetPath('/icons/archive/graphics/swag.png')}>
+          <img src={getAssetPath('/icons/archive/graphics/vinylenvy1.png')}>
         </div>
       </div>
 
       <div class="section">
         <h4 class="section-title">Posters / Covers</h4>
         <div class="gallery-grid">
-          <img src="/icons/archive/posters/cassette.png">
-          <img src="/icons/archive/posters/concert.png">
-          <img src="/icons/archive/posters/flowers-1.png">
-          <img src="/icons/archive/posters/flowers-2.png">
-          <img src="/icons/archive/posters/flowers-3.png">
-          <img src="/icons/archive/posters/flowers-4.png">
-          <img src="/icons/archive/posters/hard2reach1.png">
-          <img src="/icons/archive/posters/palerider.png">
-          <img src="/icons/archive/posters/patty.jpg">
-          <img src="/icons/archive/posters/poster.png">
+          <img src={getAssetPath('/icons/archive/posters/cassette.png')}>
+          <img src={getAssetPath('/icons/archive/posters/concert.png')}>
+          <img src={getAssetPath('/icons/archive/posters/flowers-1.png')}>
+          <img src={getAssetPath('/icons/archive/posters/flowers-2.png')}>
+          <img src={getAssetPath('/icons/archive/posters/flowers-3.png')}>
+          <img src={getAssetPath('/icons/archive/posters/flowers-4.png')}>
+          <img src={getAssetPath('/icons/archive/posters/hard2reach1.png')}>
+          <img src={getAssetPath('/icons/archive/posters/palerider.png')}>
+          <img src={getAssetPath('/icons/archive/posters/patty.jpg')}>
+          <img src={getAssetPath('/icons/archive/posters/poster.png')}>
         </div>
       </div>
 
       <div class="section">
         <h4 class="section-title">Apparel</h4>
         <div class="gallery-grid">
-          <img src="/icons/archive/apparel/bikini.png">
-          <img src="/icons/archive/apparel/crucifix.png">
-          <img src="/icons/archive/apparel/hat2.png">
-          <img src="/icons/archive/apparel/hoodie.png">
-          <img src="/icons/archive/apparel/mollino.png">
-          <img src="/icons/archive/apparel/shaggs.png">
-          <img src="/icons/archive/apparel/vintage-1.png">
-          <img src="/icons/archive/apparel/vintage-2.png">
-          <img src="/icons/archive/apparel/vintage-3.png">
+          <img src={getAssetPath('/icons/archive/apparel/bikini.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/crucifix.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/hat2.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/hoodie.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/mollino.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/shaggs.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/vintage-1.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/vintage-2.png')}>
+          <img src={getAssetPath('/icons/archive/apparel/vintage-3.png')}>
         </div>
       </div>
 
       <div class="section">
         <h4 class="section-title">Objects</h4>
         <div class="gallery-grid">
-          <img src="/icons/archive/objects/table.jpg">
+          <img src={getAssetPath('/icons/archive/objects/table.jpg')}>
         </div>
       </div>
     </div>

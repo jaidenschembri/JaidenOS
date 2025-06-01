@@ -2,6 +2,7 @@
   import { onMount, onDestroy, createEventDispatcher } from 'svelte';
   import { windowsStore } from '$lib/stores/windows';
   import WindowWrapper from '$lib/components/WindowWrapper.svelte';
+  import { getAssetPath } from '$lib/utils/assets';
   
   let userInput = '';
   let chatDisplay: HTMLElement | null = null;
@@ -296,11 +297,11 @@ You only show love to people who earn it. If they're disrespectful, you throw it
     chatDisplay = document.getElementById('chat-box');
     
     // Initialize audio
-    sendSound = new Audio('/audio/send.mp3');
-    receiveSound = new Audio('/audio/receive.mp3');
+    sendSound = new Audio(getAssetPath('/audio/send.mp3'));
+    receiveSound = new Audio(getAssetPath('/audio/receive.mp3'));
     
     // Load custom replies
-    fetch('/custom-replies.json')
+    fetch(getAssetPath('/custom-replies.json'))
       .then(res => {
         if (!res.ok) {
           throw new Error('Custom replies file not found');

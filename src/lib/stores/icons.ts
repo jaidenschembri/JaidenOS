@@ -1,34 +1,35 @@
 import { writable } from 'svelte/store';
 import type { IconState } from '$lib/types';
 import { UI_DIMENSIONS } from '$lib/types';
+import { getAssetPath } from '$lib/utils/assets';
 
 // Configuration for icons
 const APPS_CONFIG = {
   // Application Icons
   chatbot: { 
     title: 'Chatbot', 
-    icon: '/icons/folder-icon.png', 
-    openIcon: '/icons/folder-icon-open.png' 
+    icon: getAssetPath('/icons/folder-icon.png'), 
+    openIcon: getAssetPath('/icons/folder-icon-open.png') 
   },
   oscillator: { 
     title: 'Oscillator', 
-    icon: '/icons/folder-icon.png', 
-    openIcon: '/icons/folder-icon-open.png' 
+    icon: getAssetPath('/icons/folder-icon.png'), 
+    openIcon: getAssetPath('/icons/folder-icon-open.png') 
   },
   numerology: { 
     title: 'Numerology', 
-    icon: '/icons/folder-icon.png', 
-    openIcon: '/icons/folder-icon-open.png' 
+    icon: getAssetPath('/icons/folder-icon.png'), 
+    openIcon: getAssetPath('/icons/folder-icon-open.png') 
   },
   guestbook: { 
     title: 'Guestbook', 
-    icon: '/icons/folder-icon.png', 
-    openIcon: '/icons/folder-icon-open.png' 
+    icon: getAssetPath('/icons/folder-icon.png'), 
+    openIcon: getAssetPath('/icons/folder-icon-open.png') 
   },
   'window-portfolio': { 
     title: 'Portfolio', 
-    icon: '/icons/folder-icon.png', 
-    openIcon: '/icons/folder-icon-open.png' 
+    icon: getAssetPath('/icons/folder-icon.png'), 
+    openIcon: getAssetPath('/icons/folder-icon-open.png') 
   },
 };
 

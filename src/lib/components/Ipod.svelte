@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { getAssetPath } from '$lib/utils/assets';
 
   interface Track {
     title: string;
@@ -11,15 +12,15 @@
   let currentTrack = 0;
   
   const playlist: Track[] = [
-    { title: 'Such Great Heights', src: '/icons/mp3\'s/Such Great Heights.mp3' },
-    { title: 'Into Dust', src: '/icons/mp3\'s/Into Dust.mp3' },
-    { title: 'Welcome To The Black Parade', src: '/icons/mp3\'s/Welcome To The Black Parade.mp3' },
-    { title: 'Summit', src: '/icons/mp3\'s/Skrillex - Summit (feat. Ellie Goulding) [Video by Pilerats].mp3' },
-    { title: '54321', src: '/icons/mp3\'s/A Rocket To The Moon - 54321 [HD].mp3' },
-    { title: 'Im God', src: '/icons/mp3\'s/Imgod.mp3' },
-    { title: 'Dance Inside', src: '/icons/mp3\'s/Dance Inside.mp3' },
-    { title: 'Stars and Boulevards', src: '/icons/mp3\'s/Stars and Boulevards.mp3' },
-    { title: 'Strange Things Will Happen', src: '/icons/mp3\'s/Strange Things Will Happen.mp3' },
+    { title: 'Such Great Heights', src: getAssetPath('/icons/mp3\'s/Such Great Heights.mp3') },
+    { title: 'Into Dust', src: getAssetPath('/icons/mp3\'s/Into Dust.mp3') },
+    { title: 'Welcome To The Black Parade', src: getAssetPath('/icons/mp3\'s/Welcome To The Black Parade.mp3') },
+    { title: 'Summit', src: getAssetPath('/icons/mp3\'s/Skrillex - Summit (feat. Ellie Goulding) [Video by Pilerats].mp3') },
+    { title: '54321', src: getAssetPath('/icons/mp3\'s/A Rocket To The Moon - 54321 [HD].mp3') },
+    { title: 'Im God', src: getAssetPath('/icons/mp3\'s/Imgod.mp3') },
+    { title: 'Dance Inside', src: getAssetPath('/icons/mp3\'s/Dance Inside.mp3') },
+    { title: 'Stars and Boulevards', src: getAssetPath('/icons/mp3\'s/Stars and Boulevards.mp3') },
+    { title: 'Strange Things Will Happen', src: getAssetPath('/icons/mp3\'s/Strange Things Will Happen.mp3') },
   ];
 
   /**
@@ -89,7 +90,7 @@
 <div id="fixed-ipod" class="fixed-ipod">
   <div class="ipod-nano-body" id="ipod-drag">
     <div class="ipod-logo">
-      <img src="/icons/apple-logo.png" class="ipod-logo-img" alt="Apple logo" />
+      <img src={getAssetPath('/icons/apple-logo.png')} class="ipod-logo-img" alt="Apple logo" />
     </div>
     <div class="ipod-screen">
       <div class="nano-text" id="nano-track">

@@ -2,6 +2,7 @@
   import { onMount, createEventDispatcher } from 'svelte';
   import { closeWindow, minimizeWindow, maximizeWindow, focusWindow, moveWindow, resizeWindow, windowsStore } from '$lib/stores/windows';
   import { WindowsSounds } from '$lib/utils';
+  import { getAssetPath } from '$lib/utils/assets';
   import type { WindowState } from '$lib/types';
 
   // Props
@@ -117,11 +118,11 @@
     {windowState.title}
     <div class="window-controls">
       <button class="minimize-btn" on:click|stopPropagation={handleMinimize} title="Minimize">
-        <img src="/icons/minimize-icon.svg" alt="Minimize" />
+        <img src={getAssetPath('/icons/minimize-icon.svg')} alt="Minimize" />
       </button>
 
       <button class="close-btn" on:click|stopPropagation={handleClose} title="Close">
-        <img src="/icons/close-icon.svg" alt="Close" />
+        <img src={getAssetPath('/icons/close-icon.svg')} alt="Close" />
       </button>
     </div>
   </div>
