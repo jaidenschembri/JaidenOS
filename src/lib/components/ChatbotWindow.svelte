@@ -165,7 +165,11 @@ You only show love to people who earn it. If they're disrespectful, you throw it
     const msg = document.createElement('div');
     msg.classList.add('message');
     msg.classList.add(sender === "you" ? "user-message" : "bot-message");
-    msg.innerHTML = text;
+    
+    // Create inline message with label and content
+    const label = sender === "you" ? "you:" : "jaiden:";
+    msg.innerHTML = `<span class="message-label">${label}</span> ${text}`;
+    
     chatDisplay.appendChild(msg);
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
   }
@@ -438,7 +442,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
   
   .typing {
     opacity: 0.7;
-    font-style: italic;
   }
 
   /* Retro scrollbar styling */

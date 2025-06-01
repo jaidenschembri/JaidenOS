@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte';
   import { windowsStore, focusWindow, openWindow } from '$lib/stores/windows';
+  import { WindowsSounds } from '$lib/utils';
   
   const dispatch = createEventDispatcher();
   let time = '--:--';
@@ -17,10 +18,12 @@
   }
   
   function toggleStartMenu(): void {
+    WindowsSounds.playClickSound();
     dispatch('toggleStartMenu');
   }
   
   function toggleIpod(): void {
+    WindowsSounds.playClickSound();
     ipodVisible = !ipodVisible;
     const ipod = document.getElementById('fixed-ipod');
     if (ipod) {
@@ -29,9 +32,14 @@
   }
 
   function handleTaskbarAppClick(id: string): void {
+    WindowsSounds.playClickSound();
     $windowsStore[id].isMinimized 
       ? focusWindow(id) 
       : openWindow(id);
+  }
+
+  function handleSystemTrayClick(): void {
+    WindowsSounds.playNotificationSound();
   }
   
   onMount(() => {
@@ -77,13 +85,14 @@
   <!-- Right-side Tray -->
   <div class="taskbar-right-box">
     <div class="taskbar-icons">
-      <a href="https://x.com/jaiddog33" target="_blank" class="taskbar-icon">
+      <!-- Social Media Icons -->
+      <a href="https://x.com/jaiddog33" target="_blank" class="taskbar-icon" on:click={handleSystemTrayClick}>
         <img src="/icons/twitter-icon.png" alt="Twitter" class="tray-icon" />
       </a>
-      <a href="https://www.instagram.com/jaidenschembri/" target="_blank" class="taskbar-icon">
+      <a href="https://www.instagram.com/jaidenschembri/" target="_blank" class="taskbar-icon" on:click={handleSystemTrayClick}>
         <img src="/icons/instagram-icon.png" alt="Instagram" class="tray-icon" />
       </a>
-      <a href="https://www.twitch.tv/jaiddog28" target="_blank" class="taskbar-icon">
+      <a href="https://www.twitch.tv/jaiddog28" target="_blank" class="taskbar-icon" on:click={handleSystemTrayClick}>
         <img src="/icons/twitch-icon.png" alt="Twitch" class="tray-icon" />
       </a>
     </div>
@@ -371,5 +380,32 @@
     width: 20px;
     height: 20px;
     margin-right: 5px;
+  }
+
+  /* ===== SYSTEM TRAY ICONS ===== */
+  .system-tray-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 4px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    margin: 0 1px;
+  }
+
+  .system-tray-icon:hover {
+    background: #b0b0b0;
+    border: 1px inset #ddd;
+  }
+
+  .tray-emoji {
+    font-size: 12px;
+    filter: grayscale(0.3);
+    transition: filter 0.2s;
+  }
+
+  .system-tray-icon:hover .tray-emoji {
+    filter: grayscale(0);
   }
 </style> 

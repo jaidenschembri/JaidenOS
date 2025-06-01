@@ -55,16 +55,6 @@ const initialWindows: Record<string, WindowState> = {
     isMaximized: false,
     isMinimized: false
   },
-  'window-shop': {
-    id: 'window-shop',
-    title: 'SHOP',
-    isOpen: false,
-    zIndex: 100,
-    position: { x: 150, y: 150 },
-    size: { width: 500, height: 400 },
-    isMaximized: false,
-    isMinimized: false
-  },
   'gifypet': {
     id: 'gifypet',
     title: 'GIFYPET',

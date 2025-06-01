@@ -4,6 +4,7 @@ import { UI_DIMENSIONS } from '$lib/types';
 
 // Configuration for icons
 const APPS_CONFIG = {
+  // Application Icons
   chatbot: { 
     title: 'Chatbot', 
     icon: '/icons/folder-icon.png', 
@@ -21,11 +22,6 @@ const APPS_CONFIG = {
   },
   guestbook: { 
     title: 'Guestbook', 
-    icon: '/icons/folder-icon.png', 
-    openIcon: '/icons/folder-icon-open.png' 
-  },
-  'window-shop': { 
-    title: 'Shop', 
     icon: '/icons/folder-icon.png', 
     openIcon: '/icons/folder-icon-open.png' 
   },
@@ -52,33 +48,28 @@ const initialIcons: Record<string, IconState> = Object.entries(APPS_CONFIG).redu
 // Create the store
 export const iconsStore = writable<Record<string, IconState>>(initialIcons);
 
-// Function to position icons in a grid layout
+// Function to position icons in a single vertical column
 export function positionIcons(): void {
   iconsStore.update(icons => {
     // Calculate available space
-    const { width: iconWidth, height: iconHeight } = UI_DIMENSIONS.layout.iconGrid;
+    const { height: iconHeight } = UI_DIMENSIONS.layout.iconGrid;
     const { padding } = UI_DIMENSIONS.layout.iconGrid;
     const { taskbarHeight } = UI_DIMENSIONS.layout;
     
     const availableHeight = window.innerHeight - taskbarHeight - padding * 2;
-    const availableWidth = window.innerWidth - padding * 2;
     
-    // Number of icons per column
-    const iconsPerColumn = Math.floor(availableHeight / iconHeight);
-    if (iconsPerColumn <= 0) return icons; // Safety check
-    
-    // Position each icon in the grid
+    // Position each icon in a vertical column
     Object.entries(icons).forEach(([id, icon], index) => {
-      const column = Math.floor(index / iconsPerColumn);
-      const row = index % iconsPerColumn;
+      // Calculate y position for vertical layout
+      const y = padding + index * iconHeight;
       
-      // Ensure icons don't exceed screen width
-      if (column * iconWidth + padding > availableWidth) {
-        return icons; // Stop positioning if we exceed screen width
+      // Ensure icons don't exceed screen height
+      if (y + iconHeight > availableHeight) {
+        return icons; // Stop positioning if we exceed screen height
       }
       
-      const x = padding + column * iconWidth;
-      const y = padding + row * iconHeight;
+      // Position icons at the left side of the screen
+      const x = padding;
       
       // Only update position if it's changed or not set
       if (icon.position.x !== x || icon.position.y !== y) {

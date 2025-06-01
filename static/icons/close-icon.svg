@@ -1,11 +1,29 @@
-<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-  <!-- Button border -->
-  <rect x="0" y="0" width="16" height="16" fill="#c0c0c0" />
+<svg width="16" height="14" viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg">
+  <!-- Button background -->
+  <rect x="0" y="0" width="16" height="14" fill="#c0c0c0"/>
   
-  <!-- 3D button effect -->
-  <path d="M 0,0 V 16 H 16 V 0 H 0 Z M 1,1 H 15 V 15 H 1 V 1 Z" fill="#808080" />
-  <path d="M 1,1 V 15 H 15 V 1 H 1 Z M 2,2 H 14 V 14 H 2 V 2 Z" fill="#ffffff" />
+  <!-- 3D button effect - outer border -->
+  <rect x="0" y="0" width="16" height="1" fill="#ffffff"/>
+  <rect x="0" y="0" width="1" height="14" fill="#ffffff"/>
+  <rect x="15" y="0" width="1" height="14" fill="#000000"/>
+  <rect x="0" y="13" width="16" height="1" fill="#000000"/>
   
-  <!-- X symbol -->
-  <path d="M 4,4 L 12,12 M 12,4 L 4,12" stroke="#000000" stroke-width="2" stroke-linecap="round" />
+  <!-- 3D button effect - inner border -->
+  <rect x="1" y="1" width="14" height="1" fill="#dfdfdf"/>
+  <rect x="1" y="1" width="1" height="12" fill="#dfdfdf"/>
+  <rect x="14" y="1" width="1" height="12" fill="#808080"/>
+  <rect x="1" y="12" width="14" height="1" fill="#808080"/>
+  
+  <!-- X symbol - clean diagonal lines -->
+  <rect x="5" y="4" width="2" height="2" fill="#000000"/>
+  <rect x="6" y="5" width="2" height="2" fill="#000000"/>
+  <rect x="7" y="6" width="2" height="2" fill="#000000"/>
+  <rect x="8" y="7" width="2" height="2" fill="#000000"/>
+  <rect x="9" y="8" width="2" height="2" fill="#000000"/>
+  
+  <rect x="9" y="4" width="2" height="2" fill="#000000"/>
+  <rect x="8" y="5" width="2" height="2" fill="#000000"/>
+  <rect x="7" y="6" width="2" height="2" fill="#000000"/>
+  <rect x="6" y="7" width="2" height="2" fill="#000000"/>
+  <rect x="5" y="8" width="2" height="2" fill="#000000"/>
 </svg> 

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte';
   import { closeWindow, minimizeWindow, maximizeWindow, focusWindow, moveWindow, resizeWindow, windowsStore } from '$lib/stores/windows';
+  import { WindowsSounds } from '$lib/utils';
   import type { WindowState } from '$lib/types';
 
   // Props
@@ -48,16 +49,19 @@
   }
   
   function handleClose(): void {
+    WindowsSounds.playClickSound();
     closeWindow(windowState.id);
     dispatch('close', { id: windowState.id });
   }
   
   function handleMinimize(): void {
+    WindowsSounds.playClickSound();
     minimizeWindow(windowState.id);
     dispatch('minimize', { id: windowState.id });
   }
   
   function handleMaximize(): void {
+    WindowsSounds.playClickSound();
     maximizeWindow(windowState.id);
     dispatch('maximize', { id: windowState.id });
   }
@@ -166,23 +170,35 @@
 
   .window-controls {
     display: flex;
+    gap: 2px;
   }
 
   .window-controls button {
+    width: 16px;
+    height: 14px;
     background: none;
     border: none;
     cursor: pointer;
-    color: white;
-    font-size: 16px;
+    padding: 0;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 5px;
+    transition: filter 0.1s ease;
+  }
+
+  .window-controls button:hover {
+    filter: brightness(1.1);
+  }
+
+  .window-controls button:active {
+    filter: brightness(0.9);
   }
 
   .window-controls button img {
     width: 16px;
-    height: 16px;
+    height: 14px;
+    display: block;
   }
 
   .window-content {

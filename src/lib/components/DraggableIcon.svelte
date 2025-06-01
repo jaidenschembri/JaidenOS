@@ -306,7 +306,7 @@
     align-items: center;
     text-align: center;
     width: 100px;
-    height: 110px;
+    height: 100px;
     user-select: none;
     cursor: pointer;
     transition: filter 0.1s ease;

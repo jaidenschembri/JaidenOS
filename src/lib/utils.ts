@@ -82,4 +82,62 @@ export function formatDate(date: Date): string {
     hour: '2-digit',
     minute: '2-digit'
   });
+}
+
+// Classic Windows Sound Effects
+export class WindowsSounds {
+  private static audioContext: AudioContext | null = null;
+
+  static init() {
+    if (!this.audioContext) {
+      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    }
+  }
+
+  static playStartupSound() {
+    this.playTone([523, 659, 784, 1047], [0.2, 0.2, 0.2, 0.4], 0.1);
+  }
+
+  static playClickSound() {
+    this.playTone([800], [0.05], 0.05);
+  }
+
+  static playErrorSound() {
+    this.playTone([200, 150, 100], [0.2, 0.2, 0.3], 0.1);
+  }
+
+  static playNotificationSound() {
+    this.playTone([523, 659], [0.1, 0.2], 0.08);
+  }
+
+  private static playTone(frequencies: number[], durations: number[], volume: number = 0.1) {
+    if (!this.audioContext) return;
+
+    let startTime = this.audioContext.currentTime;
+
+    frequencies.forEach((freq, index) => {
+      const oscillator = this.audioContext!.createOscillator();
+      const gainNode = this.audioContext!.createGain();
+
+      oscillator.connect(gainNode);
+      gainNode.connect(this.audioContext!.destination);
+
+      oscillator.frequency.setValueAtTime(freq, startTime);
+      oscillator.type = 'square';
+
+      gainNode.gain.setValueAtTime(0, startTime);
+      gainNode.gain.linearRampToValueAtTime(volume, startTime + 0.01);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + durations[index]);
+
+      oscillator.start(startTime);
+      oscillator.stop(startTime + durations[index]);
+
+      startTime += durations[index];
+    });
+  }
+}
+
+// Initialize sounds when module loads
+if (typeof window !== 'undefined') {
+  WindowsSounds.init();
 } 

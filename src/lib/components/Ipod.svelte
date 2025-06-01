@@ -11,13 +11,15 @@
   let currentTrack = 0;
   
   const playlist: Track[] = [
-    { title: 'Such Great Heights', src: 'mp3s/Such Great Heights.mp3' },
-    { title: 'Into Dust', src: 'mp3s/Into Dust.mp3' },
-    { title: 'Welcome To The Black Parade', src: 'mp3s/Welcome To The Black Parade.mp3' },
-    { title: 'Summit', src: 'mp3s/Skrillex - Summit (feat. Ellie Goulding) [Video by Pilerats].mp3' },
-    { title: '54321', src: 'mp3s/A Rocket To The Moon - 54321 [HD].mp3' },
-    { title: 'Im God', src: 'mp3s/Imgod.mp3' },
-    { title: 'Dance Inside', src: 'mp3s/Dance Inside.mp3' },
+    { title: 'Such Great Heights', src: '/icons/mp3\'s/Such Great Heights.mp3' },
+    { title: 'Into Dust', src: '/icons/mp3\'s/Into Dust.mp3' },
+    { title: 'Welcome To The Black Parade', src: '/icons/mp3\'s/Welcome To The Black Parade.mp3' },
+    { title: 'Summit', src: '/icons/mp3\'s/Skrillex - Summit (feat. Ellie Goulding) [Video by Pilerats].mp3' },
+    { title: '54321', src: '/icons/mp3\'s/A Rocket To The Moon - 54321 [HD].mp3' },
+    { title: 'Im God', src: '/icons/mp3\'s/Imgod.mp3' },
+    { title: 'Dance Inside', src: '/icons/mp3\'s/Dance Inside.mp3' },
+    { title: 'Stars and Boulevards', src: '/icons/mp3\'s/Stars and Boulevards.mp3' },
+    { title: 'Strange Things Will Happen', src: '/icons/mp3\'s/Strange Things Will Happen.mp3' },
   ];
 
   /**
@@ -87,7 +89,7 @@
 <div id="fixed-ipod" class="fixed-ipod">
   <div class="ipod-nano-body" id="ipod-drag">
     <div class="ipod-logo">
-      <img src="/pixelated/ipod.gif" class="ipod-logo-img" alt="Apple logo" />
+      <img src="/icons/apple-logo.png" class="ipod-logo-img" alt="Apple logo" />
     </div>
     <div class="ipod-screen">
       <div class="nano-text" id="nano-track">
@@ -146,7 +148,7 @@
   }
 
   .ipod-logo-img {
-    width: 60px;
+    width: 25px;
     height: auto;
     image-rendering: pixelated;
   }
