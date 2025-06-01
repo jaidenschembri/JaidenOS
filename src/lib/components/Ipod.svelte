@@ -115,12 +115,6 @@
   /* Styling for the iPod nano interface */
 
   /* ===== CONTAINER ===== */
-  .ipod-nano {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-  }
-
   .ipod-nano-body {
     width: 180px;
     background: 

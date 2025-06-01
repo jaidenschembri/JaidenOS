@@ -56,8 +56,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
   ];
   
   let customReplyList: {trigger: string, responses: string[]}[] = [];
-  let sendSound: HTMLAudioElement;
-  let receiveSound: HTMLAudioElement;
   
   // ===== MOOD DETECTION =====
   function detectMood(input: string): string {
@@ -200,11 +198,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
     // Add user message to chat
     addMessage("you", userInput);
     
-    if (sendSound) {
-      sendSound.currentTime = 0;
-      sendSound.play().catch(() => {});
-    }
-    
     const userText = userInput;
     userInput = '';
     
@@ -213,10 +206,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
       const regex = new RegExp(entry.trigger, "i");
       if (regex.test(userText)) {
         addMessage("jaiden", randomItem(entry.responses));
-        if (receiveSound) {
-          receiveSound.currentTime = 0;
-          receiveSound.play().catch(() => {});
-        }
         return;
       }
     }
@@ -261,11 +250,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
       saveTopics(userText);
       
       addMessage("jaiden", botResponse);
-      
-      if (receiveSound) {
-        receiveSound.currentTime = 0;
-        receiveSound.play().catch(() => {});
-      }
     } catch (err) {
       console.error("⚠️ Chat error:", err);
       addMessage("jaiden", randomItem(FALLBACK_RESPONSES));
@@ -295,10 +279,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
   // ===== INITIALIZATION =====
   onMount(() => {
     chatDisplay = document.getElementById('chat-box');
-    
-    // Initialize audio
-    sendSound = new Audio(getAssetPath('/audio/send.mp3'));
-    receiveSound = new Audio(getAssetPath('/audio/receive.mp3'));
     
     // Load custom replies
     fetch(getAssetPath('/custom-replies.json'))
@@ -334,10 +314,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
     setTimeout(() => {
       const greeting = getGreeting();
       addMessage("jaiden", greeting);
-      if (receiveSound) {
-        receiveSound.currentTime = 0;
-        receiveSound.play().catch(() => {});
-      }
     }, 800);
   });
 </script>

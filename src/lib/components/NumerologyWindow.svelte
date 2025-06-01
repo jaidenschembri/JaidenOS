@@ -269,12 +269,6 @@
     color: #000;
     line-height: 1.4;
   }
-  
-  .numerology-output h3 {
-    margin-bottom: 15px;
-    color: #000080;
-    font-family: 'VT323', monospace;
-  }
 
   /* Retro scrollbar styling to match other windows */
   .numerology-output::-webkit-scrollbar {

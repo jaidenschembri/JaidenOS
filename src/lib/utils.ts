@@ -102,10 +102,6 @@ export class WindowsSounds {
     this.playTone([800], [0.05], 0.05);
   }
 
-  static playErrorSound() {
-    this.playTone([200, 150, 100], [0.2, 0.2, 0.3], 0.1);
-  }
-
   static playNotificationSound() {
     this.playTone([523, 659], [0.1, 0.2], 0.08);
   }

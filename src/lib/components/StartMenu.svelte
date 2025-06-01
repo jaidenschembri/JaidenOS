@@ -140,13 +140,6 @@
     justify-content: space-between;
   }
 
-  .menu-icon {
-    width: 16px;
-    font-size: 12px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-
   .arrow {
     font-size: 8px;
     color: #000;
@@ -225,11 +218,6 @@
     .submenu.visible {
       display: block !important;
     }
-  }
-
-  /* Position tip submenu */
-  .tip-submenu {
-    top: -10px !important;
   }
 
   /* ===== MENU DIVIDERS ===== */

@@ -517,10 +517,6 @@
     margin-bottom: 10px;
   }
   
-  .visualizer-mode {
-    height: 150px;
-  }
-
   /* Retro scrollbar styling */
   .oscillator-clean::-webkit-scrollbar {
     width: 16px;
