@@ -2,6 +2,8 @@
 
 A customizable desktop operating system theme project built with SvelteKit. This project creates a modern, user-friendly interface with customizable themes and components that mimics a desktop environment in the browser.
 
+<!-- Trigger deployment -->
+
 ## 🚀 Features
 
 - **Custom theme support** - Switch between different OS themes
