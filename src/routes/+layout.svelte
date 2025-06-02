@@ -1,5 +1,6 @@
 <script>
   import '../lib/styles/global.css';
+  import '../lib/styles/mobile.css';
   // Base layout component
 </script>
 

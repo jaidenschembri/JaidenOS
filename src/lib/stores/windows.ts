@@ -99,20 +99,57 @@ function ensureWindowInView(windowState: WindowState): { x: number; y: number } 
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1024;
     const viewportHeight = (window.innerHeight || document.documentElement.clientHeight || 768) - UI_DIMENSIONS.layout.taskbarHeight;
     
-    // Ensure window header is always accessible (at least 30px visible)
-    const minVisibleWidth = Math.min(UI_DIMENSIONS.window.minWidth, windowState.size.width);
-    const minVisibleHeight = UI_DIMENSIONS.window.headerHeight;
+    // Check if we're on mobile
+    const isMobile = viewportWidth <= 768;
     
-    // Calculate bounds
-    const maxX = Math.max(0, viewportWidth - minVisibleWidth);
-    const maxY = Math.max(0, viewportHeight - minVisibleHeight);
-    
-    // Adjust position if needed
-    x = Math.max(0, Math.min(x, maxX));
-    y = Math.max(0, Math.min(y, maxY));
+    if (isMobile) {
+      // On mobile, position windows to fill most of the screen
+      x = 5;
+      y = 10;
+    } else {
+      // Desktop positioning logic
+      // Ensure window header is always accessible (at least 30px visible)
+      const minVisibleWidth = Math.min(UI_DIMENSIONS.window.minWidth, windowState.size.width);
+      const minVisibleHeight = UI_DIMENSIONS.window.headerHeight;
+      
+      // Calculate bounds
+      const maxX = Math.max(0, viewportWidth - minVisibleWidth);
+      const maxY = Math.max(0, viewportHeight - minVisibleHeight);
+      
+      // Adjust position if needed
+      x = Math.max(0, Math.min(x, maxX));
+      y = Math.max(0, Math.min(y, maxY));
+    }
   }
   
   return { x, y };
+}
+
+/**
+ * Get mobile-optimized window size
+ */
+function getMobileOptimizedSize(windowState: WindowState): { width: number; height: number } {
+  if (typeof window === 'undefined') {
+    return windowState.size;
+  }
+
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1024;
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 768;
+  const isMobile = viewportWidth <= 768;
+  
+  if (!isMobile) {
+    return windowState.size;
+  }
+
+  // Mobile size optimization
+  const mobileWidth = Math.min(windowState.size.width, viewportWidth - 10);
+  const mobileHeight = Math.min(windowState.size.height, viewportHeight - 80);
+  
+  // Ensure minimum usable size
+  const finalWidth = Math.max(mobileWidth, 300);
+  const finalHeight = Math.max(mobileHeight, 200);
+  
+  return { width: finalWidth, height: finalHeight };
 }
 
 // Window actions
@@ -122,24 +159,39 @@ export function openWindow(id: string): void {
       currentZIndex += 1;
       
       if (browser) {
-        // Center window in viewport if first time opening or if it would be off-screen
+        // Get viewport dimensions
         const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1024;
         const viewportHeight = (window.innerHeight || document.documentElement.clientHeight || 768) - UI_DIMENSIONS.layout.taskbarHeight;
+        const isMobile = viewportWidth <= 768;
         
-        const centerX = Math.max(0, (viewportWidth - windows[id].size.width) / 2);
-        const centerY = Math.max(0, (viewportHeight - windows[id].size.height) / 2);
+        let position: { x: number; y: number };
+        let size: { width: number; height: number };
         
-        // Use the centered position if window is being opened for the first time
-        const position = !windows[id].isOpen ? 
-          { x: centerX, y: centerY } : 
-          ensureWindowInView(windows[id]);
+        if (isMobile) {
+          // Mobile positioning: center and optimize size
+          size = getMobileOptimizedSize(windows[id]);
+          position = {
+            x: Math.max(5, (viewportWidth - size.width) / 2),
+            y: Math.max(10, (viewportHeight - size.height) / 2)
+          };
+        } else {
+          // Desktop positioning: center window in viewport if first time opening
+          const centerX = Math.max(0, (viewportWidth - windows[id].size.width) / 2);
+          const centerY = Math.max(0, (viewportHeight - windows[id].size.height) / 2);
+          
+          position = !windows[id].isOpen ? 
+            { x: centerX, y: centerY } : 
+            ensureWindowInView(windows[id]);
+          size = windows[id].size;
+        }
           
         windows[id] = {
           ...windows[id],
           isOpen: true,
           isMinimized: false,
           zIndex: currentZIndex,
-          position
+          position,
+          size
         };
       } else {
         // Fallback for SSR

@@ -48,6 +48,42 @@
   function handleMouseUp(): void {
     isDragging = false;
   }
+
+  // Touch event handlers for mobile
+  function handleTouchStart(event: TouchEvent): void {
+    if (event.touches.length !== 1) return;
+    
+    // Only start dragging from the header
+    if ((event.target as HTMLElement).closest('.window-header')) {
+      isDragging = true;
+      const touch = event.touches[0];
+      dragOffset.x = touch.clientX - windowState.position.x;
+      dragOffset.y = touch.clientY - windowState.position.y;
+      focusWindow(windowState.id);
+      event.preventDefault();
+    }
+  }
+  
+  function handleTouchMove(event: TouchEvent): void {
+    if (isDragging && !windowState.isMaximized && event.touches.length === 1) {
+      const touch = event.touches[0];
+      const x = touch.clientX - dragOffset.x;
+      const y = touch.clientY - dragOffset.y;
+      
+      // Constrain to viewport on mobile
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const constrainedX = Math.max(0, Math.min(x, viewportWidth - 100)); // Keep some window visible
+      const constrainedY = Math.max(0, Math.min(y, viewportHeight - 100));
+      
+      moveWindow(windowState.id, constrainedX, constrainedY);
+      event.preventDefault();
+    }
+  }
+  
+  function handleTouchEnd(): void {
+    isDragging = false;
+  }
   
   function handleClose(): void {
     WindowsSounds.playClickSound();
@@ -70,6 +106,11 @@
   function handleWindowClick(): void {
     focusWindow(windowState.id);
   }
+
+  // Check if we're on mobile
+  function isMobileDevice(): boolean {
+    return typeof window !== 'undefined' && window.innerWidth <= 768;
+  }
   
   // Dispatch events when window state changes
   $: {
@@ -88,10 +129,16 @@
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
     
+    // Add touch event listeners for mobile
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd);
+    
     return () => {
       // Clean up listeners when component is destroyed
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
     };
   });
 </script>
@@ -101,6 +148,7 @@
   class:hidden={!windowState.isOpen || windowState.isMinimized}
   class:maximized={windowState.isMaximized}
   class:active-window={windowState.zIndex === currentZIndex}
+  class:mobile={isMobileDevice()}
   style="
     z-index: {windowState.zIndex}; 
     {!windowState.isMaximized ? `
@@ -112,6 +160,7 @@
   "
   bind:this={windowElement}
   on:mousedown={handleMouseDown}
+  on:touchstart={handleTouchStart}
   on:click={handleWindowClick}
 >
   <div class="window-header">
@@ -207,5 +256,72 @@
     height: calc(100% - 30px);
     overflow: auto;
     position: relative;
+  }
+
+  /* ===== MOBILE WINDOW STYLES ===== */
+  @media (max-width: 768px) {
+    .window.mobile {
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      min-width: calc(100vw - 20px) !important;
+      max-width: calc(100vw - 10px) !important;
+      min-height: 200px;
+      max-height: calc(100vh - 80px) !important;
+    }
+
+    .window.mobile.maximized {
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .window.mobile .window-content {
+      padding: 16px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Improve scrollbar for mobile */
+    .window.mobile .window-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .window.mobile .window-content::-webkit-scrollbar-track {
+      background: rgba(192, 192, 192, 0.3);
+    }
+
+    .window.mobile .window-content::-webkit-scrollbar-thumb {
+      background: rgba(136, 136, 136, 0.6);
+      border-radius: 4px;
+    }
+  }
+
+  /* Mobile landscape adjustments */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .window.mobile {
+      max-height: calc(100vh - 60px) !important;
+    }
+
+    .window.mobile .window-content {
+      padding: 12px;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .window {
+      border-radius: 6px;
+    }
+
+    .window .window-header {
+      border-radius: 6px 6px 0 0;
+    }
+
+    .window.maximized {
+      border-radius: 0;
+    }
+
+    .window.maximized .window-header {
+      border-radius: 0;
+    }
   }
 </style> 

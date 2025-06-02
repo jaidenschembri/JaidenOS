@@ -136,4 +136,121 @@ export class WindowsSounds {
 // Initialize sounds when module loads
 if (typeof window !== 'undefined') {
   WindowsSounds.init();
-} 
+}
+
+/**
+ * Mobile and responsive utilities
+ */
+export const ResponsiveUtils = {
+  /**
+   * Check if the current device is mobile
+   */
+  isMobile(): boolean {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth <= 768;
+  },
+
+  /**
+   * Check if the current device is tablet
+   */
+  isTablet(): boolean {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth > 768 && window.innerWidth <= 1024;
+  },
+
+  /**
+   * Check if the current device is desktop
+   */
+  isDesktop(): boolean {
+    if (typeof window === 'undefined') return true;
+    return window.innerWidth > 1024;
+  },
+
+  /**
+   * Get mobile-optimized window dimensions
+   */
+  getMobileWindowSize(defaultWidth: number, defaultHeight: number): { width: number; height: number } {
+    if (typeof window === 'undefined') {
+      return { width: defaultWidth, height: defaultHeight };
+    }
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    if (this.isMobile()) {
+      return {
+        width: Math.min(defaultWidth, viewportWidth - 20),
+        height: Math.min(defaultHeight, viewportHeight - 100)
+      };
+    }
+    
+    if (this.isTablet()) {
+      return {
+        width: Math.min(defaultWidth, viewportWidth - 60),
+        height: Math.min(defaultHeight, viewportHeight - 120)
+      };
+    }
+    
+    return { width: defaultWidth, height: defaultHeight };
+  },
+
+  /**
+   * Get mobile-optimized position for centering
+   */
+  getMobilePosition(windowWidth: number, windowHeight: number): { x: number; y: number } {
+    if (typeof window === 'undefined') {
+      return { x: 100, y: 100 };
+    }
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    if (this.isMobile()) {
+      return {
+        x: Math.max(5, (viewportWidth - windowWidth) / 2),
+        y: Math.max(10, (viewportHeight - windowHeight) / 2)
+      };
+    }
+    
+    return {
+      x: Math.max(0, (viewportWidth - windowWidth) / 2),
+      y: Math.max(0, (viewportHeight - windowHeight) / 2)
+    };
+  },
+
+  /**
+   * Check if device supports touch
+   */
+  isTouchDevice(): boolean {
+    if (typeof window === 'undefined') return false;
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  },
+
+  /**
+   * Get safe area insets for mobile devices with notches
+   */
+  getSafeAreaInsets(): { top: number; bottom: number; left: number; right: number } {
+    if (typeof window === 'undefined' || typeof getComputedStyle === 'undefined') {
+      return { top: 0, bottom: 0, left: 0, right: 0 };
+    }
+
+    const style = getComputedStyle(document.documentElement);
+    return {
+      top: parseInt(style.getPropertyValue('env(safe-area-inset-top)') || '0'),
+      bottom: parseInt(style.getPropertyValue('env(safe-area-inset-bottom)') || '0'),
+      left: parseInt(style.getPropertyValue('env(safe-area-inset-left)') || '0'),
+      right: parseInt(style.getPropertyValue('env(safe-area-inset-right)') || '0')
+    };
+  },
+
+  /**
+   * Debounce function for resize events
+   */
+  debounce<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
+    let timeout: NodeJS.Timeout;
+    return (...args: Parameters<T>) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+}; 
