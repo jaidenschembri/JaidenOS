@@ -12,21 +12,18 @@
   
   // Predefined background images
   const backgrounds = [
+    // Custom local backgrounds:
     {
-      name: 'Clouds',
-      url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop'
+      name: 'Custom Photo',
+      url: '/backgrounds/DSC00330-Edit-59391339deded__880.jpg'
     },
     {
-      name: 'Space',
-      url: 'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1920&h=1080&fit=crop'
+      name: 'Wallhaven 1',
+      url: '/backgrounds/wallhaven-zywe5j.jpg'
     },
     {
-      name: 'Retro Grid',
-      url: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop'
-    },
-    {
-      name: 'Mountains',
-      url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop'
+      name: 'Wallhaven 2',
+      url: '/backgrounds/wallhaven-zywwky.jpg'
     },
     {
       name: 'Default Pattern',

@@ -3,30 +3,47 @@
   import { WindowsSounds } from '$lib/utils';
   
   const dispatch = createEventDispatcher();
-  let submenuVisible = false;
-  let submenuTimeout: ReturnType<typeof setTimeout> | null = null;
-  
-  function setTheme(theme: string): void {
+  let backgroundSubmenuVisible = false;
+  let backgroundSubmenuTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  // Background options (same as DesktopContextMenu)
+  const backgrounds = [
+    // Custom local backgrounds:
+    {
+      name: 'Custom Photo',
+      url: '/backgrounds/DSC00330-Edit-59391339deded__880.jpg'
+    },
+    {
+      name: 'Wallhaven 1',
+      url: '/backgrounds/wallhaven-zywe5j.jpg'
+    },
+    {
+      name: 'Wallhaven 2',
+      url: '/backgrounds/wallhaven-zywwky.jpg'
+    },
+    {
+      name: 'Default Pattern',
+      url: 'none' // Special case for default gradient
+    }
+  ];
+
+  function changeBackground(backgroundUrl: string): void {
     WindowsSounds.playClickSound();
-    document.body.className = '';
-    document.body.classList.add(`${theme}-theme`);
     
-    // Apply theme-specific background images
-    if (theme === 'classic') {
-      document.body.style.backgroundImage = 'url("https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop")';
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundPosition = 'center';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundAttachment = 'fixed';
-    } else if (theme === 'win98') {
-      document.body.style.backgroundImage = 'url("https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1920&h=1080&fit=crop")';
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundPosition = 'center';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundAttachment = 'fixed';
+    if (backgroundUrl === 'none') {
+      // Restore default gradient pattern
+      document.body.style.backgroundImage = `
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 2px, transparent 2px),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 2px, transparent 2px),
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%)
+      `;
+      document.body.style.backgroundSize = '40px 40px, 40px 40px, 20px 20px, 20px 20px';
+      document.body.style.backgroundPosition = '0 0, 20px 20px, 0 0, 10px 10px';
+      document.body.style.backgroundAttachment = 'scroll';
     } else {
-      // Default desktop theme
-      document.body.style.backgroundImage = 'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop")';
+      // Apply new background image
+      document.body.style.backgroundImage = `url("${backgroundUrl}")`;
       document.body.style.backgroundSize = 'cover';
       document.body.style.backgroundPosition = 'center';
       document.body.style.backgroundRepeat = 'no-repeat';
@@ -40,24 +57,24 @@
     WindowsSounds.playClickSound();
   }
 
-  function showSubmenu(): void {
-    if (submenuTimeout) {
-      clearTimeout(submenuTimeout);
-      submenuTimeout = null;
+  function showBackgroundSubmenu(): void {
+    if (backgroundSubmenuTimeout) {
+      clearTimeout(backgroundSubmenuTimeout);
+      backgroundSubmenuTimeout = null;
     }
-    submenuVisible = true;
+    backgroundSubmenuVisible = true;
   }
 
-  function hideSubmenu(): void {
-    submenuTimeout = setTimeout(() => {
-      submenuVisible = false;
-    }, 100); // Small delay to allow moving to submenu
+  function hideBackgroundSubmenu(): void {
+    backgroundSubmenuTimeout = setTimeout(() => {
+      backgroundSubmenuVisible = false;
+    }, 100);
   }
 
-  function keepSubmenuOpen(): void {
-    if (submenuTimeout) {
-      clearTimeout(submenuTimeout);
-      submenuTimeout = null;
+  function keepBackgroundSubmenuOpen(): void {
+    if (backgroundSubmenuTimeout) {
+      clearTimeout(backgroundSubmenuTimeout);
+      backgroundSubmenuTimeout = null;
     }
   }
 </script>
@@ -96,15 +113,22 @@
       <div class="menu-divider-line"></div>
     </li>
 
-    <li class="submenu-parent" on:mouseenter={showSubmenu} on:mouseleave={hideSubmenu}>
-      Theme ▸
-      <ul class="submenu" class:visible={submenuVisible} on:mouseenter={keepSubmenuOpen} on:mouseleave={hideSubmenu}>
-        <li on:click={() => setTheme('classic')}>Windows93</li>
-        <li on:click={() => setTheme('win98')}>Windows 98</li>
+    <li class="submenu-parent" 
+        on:mouseenter={showBackgroundSubmenu} 
+        on:mouseleave={hideBackgroundSubmenu}
+        on:click={showBackgroundSubmenu}>
+      Backgrounds ▸
+      <ul class="submenu" 
+          class:visible={backgroundSubmenuVisible} 
+          on:mouseenter={keepBackgroundSubmenuOpen} 
+          on:mouseleave={hideBackgroundSubmenu}>
+        {#each backgrounds as bg}
+          <li on:click={() => changeBackground(bg.url)}>{bg.name}</li>
+        {/each}
       </ul>
     </li>
     
-    <li class="menu-divider mobile-only-divider">
+    <li class="menu-divider">
       <div class="menu-divider-line"></div>
     </li>
     
@@ -178,8 +202,7 @@
 
   /* Prevent hover on dividers */
   .start-menu li:has(.menu-divider-line):hover,
-  .start-menu li.menu-divider:hover,
-  .start-menu li.mobile-only-divider:hover {
+  .start-menu li.menu-divider:hover {
     background: transparent !important;
     cursor: default !important;
     box-shadow: none !important;
@@ -231,18 +254,6 @@
     color: white;
   }
 
-  /* Remove old hover-based submenu logic */
-  @media (min-width: 769px) {
-    .submenu-parent:hover .submenu,
-    .submenu:hover {
-      display: none; /* Disable CSS hover, use JS instead */
-    }
-    
-    .submenu.visible {
-      display: block !important;
-    }
-  }
-
   /* ===== MENU DIVIDERS ===== */
   .menu-divider {
     padding: 3px 0 !important;
@@ -256,11 +267,5 @@
     box-shadow: 0 1px 0 #fff;
     margin: 0 4px;
     display: block;
-  }
-
-  @media (min-width: 769px) {
-    .mobile-only-divider {
-      display: none !important;
-    }
   }
 </style> 

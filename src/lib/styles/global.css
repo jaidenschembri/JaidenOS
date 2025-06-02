@@ -8,7 +8,7 @@
 body {
   font-family: 'VT323', monospace;
   background-color: #008080;
-  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop');
+  background-image: url('/backgrounds/wallhaven-zywe5j.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,17 +23,17 @@ body {
 /* Theme variations */
 body.desktop-theme {
   background-color: #008080;
-  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop');
+  background-image: url('/backgrounds/wallhaven-zywe5j.jpg');
 }
 
 body.win98-theme {
   background-color: #008080;
-  background-image: url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1920&h=1080&fit=crop');
+  background-image: url('/backgrounds/wallhaven-zywwky.jpg');
 }
 
 body.classic-theme {
   background-color: #336699;
-  background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop');
+  background-image: url('/backgrounds/DSC00330-Edit-59391339deded__880.jpg');
 }
 
 /* Window Components */
