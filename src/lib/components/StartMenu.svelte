@@ -36,6 +36,9 @@
   function changeBackground(backgroundUrl: string): void {
     WindowsSounds.playClickSound();
     
+    // Detect if we're on mobile (specifically iOS Safari)
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    
     if (backgroundUrl === 'none') {
       // Restore default gradient pattern
       document.body.style.backgroundImage = `
@@ -53,7 +56,8 @@
       document.body.style.backgroundSize = 'cover';
       document.body.style.backgroundPosition = 'center';
       document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundAttachment = 'fixed';
+      // Use 'scroll' on mobile devices to avoid Safari issues, 'fixed' on desktop
+      document.body.style.backgroundAttachment = isMobile ? 'scroll' : 'fixed';
     }
     
     dispatch('close');

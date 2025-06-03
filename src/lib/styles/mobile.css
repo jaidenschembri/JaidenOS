@@ -1,6 +1,14 @@
 /* ===== MOBILE RESPONSIVE STYLES ===== */
 /* Comprehensive mobile optimization for desktop OS theme */
 
+/* ===== MOBILE BACKGROUND FIX ===== */
+@media (max-width: 768px) {
+  /* Fix background-attachment for mobile Safari */
+  body {
+    background-attachment: scroll !important;
+  }
+}
+
 /* ===== SMALL MOBILE DEVICES (576px and down) ===== */
 @media (max-width: 576px) {
   /* Body adjustments */
