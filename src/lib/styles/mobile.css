@@ -161,6 +161,21 @@
     min-height: 44px;
     min-width: 44px;
   }
+
+  /* Window control buttons mobile optimization */
+  .window-controls button {
+    min-width: 32px !important;
+    min-height: 28px !important;
+    padding: 4px !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    background-color: transparent !important;
+  }
+
+  .window-controls button:active {
+    transform: scale(0.95);
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
 }
 
 /* ===== MOBILE LANDSCAPE ORIENTATION ===== */

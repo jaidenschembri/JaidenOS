@@ -354,35 +354,6 @@
     filter: brightness(0.5);
   }
 
-  /* ===== INSTALL PWA BUTTON ===== */
-  .install-pwa {
-    background: #e0e0e0;
-    font-family: 'VT323', monospace;
-    font-size: 12px;
-    width: auto;
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border: 2px outset #f0f0f0;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-
-  .install-pwa:hover {
-    background: #ccc;
-  }
-
-  .install-pwa:active {
-    border-style: inset;
-  }
-
-  .install-pwa img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-  }
-
   /* ===== SYSTEM TRAY ICONS ===== */
   .system-tray-icon {
     display: flex;
@@ -408,5 +379,92 @@
 
   .system-tray-icon:hover .tray-emoji {
     filter: grayscale(0);
+  }
+
+  /* ===== MOBILE RESPONSIVE STYLES ===== */
+  @media (max-width: 768px) {
+    .taskbar {
+      padding: 2px 8px;
+      height: 36px;
+    }
+
+    .taskbar-left {
+      gap: 6px;
+    }
+
+    .taskbar-apps {
+      gap: 4px;
+      padding-right: 6px;
+    }
+
+    /* Mobile taskbar buttons - icon only */
+    .taskbar-button {
+      width: 36px;
+      min-width: 36px;
+      max-width: 36px;
+      height: 32px;
+      padding: 2px;
+      justify-content: center;
+    }
+
+    .taskbar-button span {
+      display: none; /* Hide text on mobile */
+    }
+
+    .taskbar-button .taskbar-icon-img {
+      width: 28px;
+      height: 28px;
+      margin-left: 0;
+    }
+
+    /* Mobile system tray */
+    .taskbar-right-box {
+      padding: 1px 4px;
+      gap: 4px;
+    }
+
+    .taskbar-clock {
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .tray-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    .taskbar-divider {
+      width: 2px;
+      height: 16px;
+      margin: 0 2px;
+    }
+  }
+
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    .taskbar {
+      padding: 2px 4px;
+    }
+
+    .taskbar-left {
+      gap: 4px;
+    }
+
+    .taskbar-apps {
+      gap: 2px;
+      padding-right: 4px;
+    }
+
+    .taskbar-button {
+      width: 32px;
+      min-width: 32px;
+      max-width: 32px;
+      height: 30px;
+    }
+
+    .taskbar-button .taskbar-icon-img {
+      width: 24px;
+      height: 24px;
+    }
   }
 </style> 

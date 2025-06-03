@@ -103,6 +103,24 @@
     dispatch('maximize', { id: windowState.id });
   }
   
+  // Touch event handlers for window control buttons
+  function handleButtonTouchStart(event: TouchEvent, action: () => void): void {
+    console.log('Touch event on window control button');
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // Execute action immediately on touch
+    action();
+  }
+
+  // Handle button clicks (works for both mouse and touch)
+  function handleButtonClick(event: Event, action: () => void): void {
+    console.log('Click event on window control button');
+    event.preventDefault();
+    event.stopPropagation();
+    action();
+  }
+
   function handleWindowClick(): void {
     focusWindow(windowState.id);
   }
@@ -166,11 +184,21 @@
   <div class="window-header">
     {windowState.title}
     <div class="window-controls">
-      <button class="minimize-btn" on:click|stopPropagation={handleMinimize} title="Minimize">
+      <button 
+        class="minimize-btn" 
+        on:click|stopPropagation={(e) => handleButtonClick(e, handleMinimize)}
+        on:touchstart|stopPropagation={(e) => handleButtonTouchStart(e, handleMinimize)}
+        title="Minimize"
+      >
         <img src={getAssetPath('/icons/minimize-icon.svg')} alt="Minimize" />
       </button>
 
-      <button class="close-btn" on:click|stopPropagation={handleClose} title="Close">
+      <button 
+        class="close-btn" 
+        on:click|stopPropagation={(e) => handleButtonClick(e, handleClose)}
+        on:touchstart|stopPropagation={(e) => handleButtonTouchStart(e, handleClose)}
+        title="Close"
+      >
         <img src={getAssetPath('/icons/close-icon.svg')} alt="Close" />
       </button>
     </div>
@@ -212,6 +240,7 @@
     align-items: center;
     cursor: move;
     user-select: none;
+    touch-action: pan-y; /* Allow vertical scrolling but enable custom touch handling */
   }
   
   .active-window .window-header {
@@ -220,7 +249,8 @@
 
   .window-controls {
     display: flex;
-    gap: 2px;
+    gap: 0px;
+    touch-action: manipulation; /* Optimize touch interactions for buttons */
   }
 
   .window-controls button {
@@ -235,6 +265,8 @@
     align-items: center;
     justify-content: center;
     transition: filter 0.1s ease;
+    position: relative;
+    z-index: 10;
   }
 
   .window-controls button:hover {
@@ -278,6 +310,41 @@
       padding: 16px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile-optimized window controls */
+    .window.mobile .window-controls {
+      gap: 0px;
+    }
+
+    .window.mobile .window-controls button {
+      width: 32px;
+      height: 28px;
+      min-width: 32px;
+      min-height: 28px;
+      padding: 0px;
+      border-radius: 4px;
+      background-color: transparent;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      pointer-events: auto;
+      position: relative;
+      z-index: 100;
+    }
+
+    .window.mobile .window-controls button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .window.mobile .window-controls button:active {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(0.95);
+    }
+
+    .window.mobile .window-controls button img {
+      width: 20px;
+      height: 18px;
+      pointer-events: none;
     }
 
     /* Improve scrollbar for mobile */
