@@ -209,48 +209,13 @@
 </div>
 
 <style>
-  .window {
-    position: absolute;
-    background-color: #c0c0c0;
-    border: 2px solid #000;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    resize: both;
-    overflow: hidden;
-  }
-
-  .window.maximized {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 40px); /* Adjust for taskbar */
-    resize: none;
-  }
+  /* Component-specific window styles only - base window styles are in global.css */
   
-  .window.active-window {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  }
-
-  .window-header {
-    background-color: #000080;
-    color: white;
-    padding: 5px 10px;
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: move;
-    user-select: none;
-    touch-action: pan-y; /* Allow vertical scrolling but enable custom touch handling */
-  }
-  
-  .active-window .window-header {
-    background-color: #1084d0;
-  }
-
+  /* Window controls specific to this component */
   .window-controls {
     display: flex;
     gap: 0px;
-    touch-action: manipulation; /* Optimize touch interactions for buttons */
+    touch-action: manipulation;
   }
 
   .window-controls button {
@@ -281,114 +246,5 @@
     width: 16px;
     height: 14px;
     display: block;
-  }
-
-  .window-content {
-    padding: 10px;
-    height: calc(100% - 30px);
-    overflow: auto;
-    position: relative;
-  }
-
-  /* ===== MOBILE WINDOW STYLES ===== */
-  @media (max-width: 768px) {
-    .window.mobile {
-      border-radius: 8px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      min-width: calc(100vw - 20px) !important;
-      max-width: calc(100vw - 10px) !important;
-      min-height: 200px;
-      max-height: calc(100vh - 80px) !important;
-    }
-
-    .window.mobile.maximized {
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .window.mobile .window-content {
-      padding: 16px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* Mobile-optimized window controls */
-    .window.mobile .window-controls {
-      gap: 0px;
-    }
-
-    .window.mobile .window-controls button {
-      width: 32px;
-      height: 28px;
-      min-width: 32px;
-      min-height: 28px;
-      padding: 0px;
-      border-radius: 4px;
-      background-color: transparent;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-      pointer-events: auto;
-      position: relative;
-      z-index: 100;
-    }
-
-    .window.mobile .window-controls button:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .window.mobile .window-controls button:active {
-      background-color: rgba(255, 255, 255, 0.15);
-      transform: scale(0.95);
-    }
-
-    .window.mobile .window-controls button img {
-      width: 20px;
-      height: 18px;
-      pointer-events: none;
-    }
-
-    /* Improve scrollbar for mobile */
-    .window.mobile .window-content::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .window.mobile .window-content::-webkit-scrollbar-track {
-      background: rgba(192, 192, 192, 0.3);
-    }
-
-    .window.mobile .window-content::-webkit-scrollbar-thumb {
-      background: rgba(136, 136, 136, 0.6);
-      border-radius: 4px;
-    }
-  }
-
-  /* Mobile landscape adjustments */
-  @media (max-width: 768px) and (orientation: landscape) {
-    .window.mobile {
-      max-height: calc(100vh - 60px) !important;
-    }
-
-    .window.mobile .window-content {
-      padding: 12px;
-    }
-  }
-
-  /* Tablet adjustments */
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .window {
-      border-radius: 6px;
-    }
-
-    .window .window-header {
-      border-radius: 6px 6px 0 0;
-    }
-
-    .window.maximized {
-      border-radius: 0;
-    }
-
-    .window.maximized .window-header {
-      border-radius: 0;
-    }
   }
 </style> 

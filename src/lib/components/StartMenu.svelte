@@ -5,6 +5,8 @@
   const dispatch = createEventDispatcher();
   let backgroundSubmenuVisible = false;
   let backgroundSubmenuTimeout: ReturnType<typeof setTimeout> | null = null;
+  let submenuElement: HTMLElement | null = null;
+  let submenuParentElement: HTMLElement | null = null;
 
   // Background options (same as DesktopContextMenu)
   const backgrounds = [
@@ -67,6 +69,28 @@
       backgroundSubmenuTimeout = null;
     }
     backgroundSubmenuVisible = true;
+    
+    // Position submenu to prevent overflow
+    setTimeout(() => {
+      if (submenuElement && submenuParentElement) {
+        const submenuRect = submenuElement.getBoundingClientRect();
+        const parentRect = submenuParentElement.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const taskbarHeight = 40; // Height of taskbar
+        const availableHeight = viewportHeight - taskbarHeight;
+        
+        // Check if submenu would overflow bottom of screen
+        if (submenuRect.bottom > availableHeight) {
+          // Calculate how much to move up
+          const overflow = submenuRect.bottom - availableHeight;
+          const newTop = Math.max(-parentRect.height, -2 - overflow);
+          submenuElement.style.top = `${newTop}px`;
+        } else {
+          // Reset to default position
+          submenuElement.style.top = '-2px';
+        }
+      }
+    }, 0);
   }
 
   function hideBackgroundSubmenu(): void {
@@ -118,11 +142,13 @@
     </li>
 
     <li class="submenu-parent" 
+        bind:this={submenuParentElement}
         on:mouseenter={showBackgroundSubmenu} 
         on:mouseleave={hideBackgroundSubmenu}
         on:click={showBackgroundSubmenu}>
       Backgrounds ▸
       <ul class="submenu" 
+          bind:this={submenuElement}
           class:visible={backgroundSubmenuVisible} 
           on:mouseenter={keepBackgroundSubmenuOpen} 
           on:mouseleave={hideBackgroundSubmenu}>

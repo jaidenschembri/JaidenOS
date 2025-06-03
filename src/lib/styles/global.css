@@ -1,10 +1,11 @@
-/* Base resets */
+/* ===== BASE RESETS ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===== BODY & BACKGROUND ===== */
 body {
   font-family: 'VT323', monospace;
   background-color: #008080;
@@ -20,7 +21,7 @@ body {
   position: relative;
 }
 
-/* Theme variations */
+/* ===== THEME VARIATIONS ===== */
 body.desktop-theme {
   background-color: #008080;
   background-image: url('/backgrounds/wallhaven-zywe5j.jpg');
@@ -36,7 +37,7 @@ body.classic-theme {
   background-image: url('/backgrounds/DSC00330-Edit-59391339deded__880.jpg');
 }
 
-/* Window Components */
+/* ===== WINDOW COMPONENTS ===== */
 .window {
   position: absolute;
   background-color: #c0c0c0;
@@ -73,6 +74,7 @@ body.classic-theme {
   align-items: center;
   cursor: move;
   user-select: none;
+  touch-action: pan-y;
 }
 
 .active-window .window-header {
@@ -101,16 +103,13 @@ body.classic-theme {
 }
 
 .window-content {
+  padding: 10px;
   height: calc(100% - 30px);
   overflow: auto;
   position: relative;
 }
 
-.hidden {
-  display: none !important;
-}
-
-/* Icon Components */
+/* ===== ICON COMPONENTS ===== */
 .icon {
   position: absolute;
   display: flex;
@@ -123,7 +122,7 @@ body.classic-theme {
   cursor: pointer;
   transition: filter 0.1s ease;
   z-index: 50;
-  touch-action: none; /* Prevent scrolling when dragging on touch devices */
+  touch-action: none;
 }
 
 .icon.selected .icon-title {
@@ -165,7 +164,7 @@ body.classic-theme {
   display: block;
 }
 
-/* Button Styles */
+/* ===== FORM ELEMENTS ===== */
 .btn {
   background-color: #c0c0c0;
   border: 2px outset #ddd;
@@ -180,7 +179,6 @@ body.classic-theme {
   border-style: inset;
 }
 
-/* Form Elements */
 input, textarea, select {
   background-color: #fff;
   border: 2px inset #ddd;
@@ -190,7 +188,11 @@ input, textarea, select {
   color: #000;
 }
 
-/* Utility Classes */
+/* ===== UTILITY CLASSES ===== */
+.hidden {
+  display: none !important;
+}
+
 .flex {
   display: flex;
 }
@@ -241,6 +243,52 @@ input, textarea, select {
 
 .absolute {
   position: absolute;
+}
+
+/* ===== ANIMATIONS ===== */
+.window.opening {
+  animation: windowOpen 0.3s ease-out;
+}
+
+.window.closing {
+  animation: windowClose 0.2s ease-in;
+}
+
+.window.minimizing {
+  animation: windowMinimize 0.3s ease-in;
+}
+
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes windowClose {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes windowMinimize {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.1) translateY(100vh);
+  }
 }
 
 /* ===== NEOCITY ANIMATIONS ===== */

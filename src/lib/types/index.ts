@@ -33,9 +33,9 @@ export const UI_DIMENSIONS = {
   // Layout configuration
   layout: {
     iconGrid: {
-      width: 150,    // Width of each icon slot including spacing
-      height: 150,   // Height of each icon slot including spacing
-      padding: 20,   // Padding from screen edges
+      width: 140,    // Width of each icon slot including spacing (reduced for better mobile fit)
+      height: 140,   // Height of each icon slot including spacing (reduced for better mobile fit)
+      padding: 15,   // Padding from screen edges (reduced for mobile)
     },
     taskbarHeight: 40 // Height of taskbar
   },

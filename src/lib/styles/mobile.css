@@ -1,21 +1,20 @@
 /* ===== MOBILE RESPONSIVE STYLES ===== */
 /* Comprehensive mobile optimization for desktop OS theme */
 
-/* ===== MOBILE BREAKPOINTS ===== */
-/* Small mobile devices (portrait phones, 576px and down) */
+/* ===== SMALL MOBILE DEVICES (576px and down) ===== */
 @media (max-width: 576px) {
-  /* Body adjustments for mobile */
+  /* Body adjustments */
   body {
-    overflow: auto; /* Allow scrolling on mobile if needed */
-    touch-action: manipulation; /* Optimize touch interactions */
+    overflow: auto;
+    touch-action: manipulation;
   }
 
-  /* Window mobile optimizations */
+  /* Window optimizations */
   .window {
     min-width: calc(100vw - 20px) !important;
     max-width: calc(100vw - 10px) !important;
     min-height: 200px;
-    max-height: calc(100vh - 60px) !important; /* Account for standard taskbar */
+    max-height: calc(100vh - 60px) !important;
     left: 5px !important;
     top: 10px !important;
     right: 5px !important;
@@ -28,24 +27,22 @@
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
-    height: calc(100vh - 40px) !important; /* Account for standard taskbar */
+    height: calc(100vh - 40px) !important;
     border-radius: 0;
     max-width: none !important;
     max-height: none !important;
   }
 
-  /* Window content mobile optimization */
   .window-content {
     padding: 12px;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* Icons mobile optimization */
+  /* Icon optimizations */
   .icon {
-    width: 100px;
-    height: 100px;
-    touch-action: none;
+    width: 100px !important;
+    height: 100px !important;
   }
 
   .icon-image img {
@@ -58,15 +55,14 @@
     line-height: 1.2;
   }
 
-  /* Form elements mobile optimization */
+  /* Form elements */
   input, textarea, select {
     padding: 8px 12px;
     font-size: 16px; /* Prevent zoom on iOS */
     border-radius: 4px;
-    min-height: 44px; /* Touch-friendly minimum */
+    min-height: 44px;
   }
 
-  /* Button mobile optimization */
   .btn {
     padding: 8px 16px;
     font-size: 16px;
@@ -76,9 +72,8 @@
   }
 }
 
-/* Medium mobile devices (landscape phones, 768px and down) */
+/* ===== MEDIUM MOBILE DEVICES (577px to 768px) ===== */
 @media (max-width: 768px) and (min-width: 577px) {
-  /* Window adjustments for medium mobile */
   .window {
     min-width: 320px;
     max-width: calc(100vw - 40px);
@@ -92,7 +87,6 @@
     left: 0 !important;
   }
 
-  /* Icons adjustments */
   .icon {
     width: 110px;
     height: 110px;
@@ -104,23 +98,35 @@
   }
 }
 
-/* Tablet devices (769px to 1024px) */
+/* ===== TABLET DEVICES (769px to 1024px) ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* Window adjustments for tablets */
   .window {
     max-width: calc(100vw - 60px);
     max-height: calc(100vh - 80px);
+    border-radius: 6px;
+  }
+
+  .window .window-header {
+    border-radius: 6px 6px 0 0;
+  }
+
+  .window.maximized {
+    border-radius: 0;
+  }
+
+  .window.maximized .window-header {
+    border-radius: 0;
   }
 }
 
-/* ===== MOBILE-SPECIFIC UTILITIES ===== */
+/* ===== GENERAL MOBILE STYLES (768px and down) ===== */
 @media (max-width: 768px) {
-  /* Hide resize handles on mobile */
+  /* Disable resize on mobile */
   .window {
     resize: none !important;
   }
 
-  /* Improve scrollbar visibility on mobile */
+  /* Improved scrollbars */
   .window-content::-webkit-scrollbar {
     width: 8px;
   }
@@ -134,7 +140,7 @@
     border-radius: 4px;
   }
 
-  /* Mobile-specific animations */
+  /* Mobile animations */
   .window.opening {
     animation-duration: 0.25s;
   }
@@ -143,7 +149,7 @@
     animation-duration: 0.2s;
   }
 
-  /* Prevent text selection on mobile during interactions */
+  /* Prevent text selection during interactions */
   .window-header,
   .icon,
   .btn {
@@ -153,7 +159,7 @@
     user-select: none;
   }
 
-  /* Improve touch targets for form elements and buttons */
+  /* Touch-friendly targets */
   .btn,
   input,
   textarea,
@@ -162,7 +168,7 @@
     min-width: 44px;
   }
 
-  /* Window control buttons mobile optimization */
+  /* Window control buttons optimization */
   .window-controls button {
     min-width: 32px !important;
     min-height: 28px !important;
@@ -198,12 +204,20 @@
 
 /* ===== MOBILE ACCESSIBILITY ===== */
 @media (max-width: 768px) {
-  /* Ensure focus indicators are visible */
   .btn:focus,
   input:focus,
   textarea:focus,
   select:focus {
     outline: 2px solid #1084d0;
     outline-offset: 2px;
+  }
+}
+
+/* ===== MOBILE ICON GRID ===== */
+@media (max-width: 768px) {
+  .desktop-icons {
+    --mobile-icon-width: 110px;
+    --mobile-icon-height: 110px;
+    --mobile-icon-padding: 10px;
   }
 } 

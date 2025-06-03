@@ -299,57 +299,5 @@
 </div>
 
 <style>
-  .icon {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 130px;
-    height: 130px;
-    user-select: none;
-    cursor: pointer;
-    transition: filter 0.1s ease;
-    z-index: 50;
-    touch-action: none; /* Prevent scrolling when dragging on touch devices */
-  }
-  
-  .icon.selected .icon-title {
-    background-color: rgba(0, 0, 128, 0.7);
-    color: white;
-  }
-  
-  .icon.open {
-    filter: brightness(1.2);
-  }
-  
-  .icon-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: -2px;
-  }
-  
-  .icon-image img {
-    width: 84px;
-    height: 84px;
-    object-fit: contain;
-  }
-  
-  .icon-title {
-    padding: 2px 4px;
-    border-radius: 2px;
-    max-width: 100%;
-    width: 100%;
-  }
-  
-  .icon-title span {
-    color: white;
-    text-shadow: 1px 1px 2px black;
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-  }
+  /* Component-specific styles only - base icon styles are in global.css */
 </style> 

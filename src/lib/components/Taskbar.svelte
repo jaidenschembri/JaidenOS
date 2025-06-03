@@ -332,10 +332,6 @@
     transition: background 0.2s, border 0.2s, box-shadow 0.1s ease-in-out;
   }
 
-  #ipod-toggle-btn:hover {
-    background: #dcdcdc;
-  }
-
   #ipod-toggle-btn:active {
     background: #aaa;
     border-color: #777;
@@ -362,10 +358,6 @@
 
   #ipod-toggle-btn.active .ipod-toggle-icon {
     filter: brightness(0.8) sepia(1) hue-rotate(90deg) saturate(2);
-  }
-
-  #ipod-toggle-btn:hover .ipod-toggle-icon {
-    filter: brightness(0.5);
   }
 
   /* ===== SYSTEM TRAY ICONS ===== */
