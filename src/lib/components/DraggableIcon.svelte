@@ -305,8 +305,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     user-select: none;
     cursor: pointer;
     transition: filter 0.1s ease;
@@ -327,12 +327,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 4px;
+    margin-bottom: -2px;
   }
   
   .icon-image img {
-    width: 64px;
-    height: 64px;
+    width: 84px;
+    height: 84px;
     object-fit: contain;
   }
   
@@ -346,7 +346,7 @@
   .icon-title span {
     color: white;
     text-shadow: 1px 1px 2px black;
-    font-size: 12px;
+    font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

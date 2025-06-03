@@ -2,7 +2,6 @@
   import { onMount, onDestroy, createEventDispatcher } from 'svelte';
   import { windowsStore } from '$lib/stores/windows';
   import WindowWrapper from '$lib/components/WindowWrapper.svelte';
-  import { getAssetPath } from '$lib/utils/assets';
   
   let userInput = '';
   let chatDisplay: HTMLElement | null = null;
@@ -54,8 +53,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
   let chatHistory = [
     { role: "system", content: SYSTEM_PROMPT }
   ];
-  
-  let customReplyList: {trigger: string, responses: string[]}[] = [];
   
   // ===== MOOD DETECTION =====
   function detectMood(input: string): string {
@@ -201,15 +198,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
     const userText = userInput;
     userInput = '';
     
-    // Check for custom reply match
-    for (const entry of customReplyList) {
-      const regex = new RegExp(entry.trigger, "i");
-      if (regex.test(userText)) {
-        addMessage("jaiden", randomItem(entry.responses));
-        return;
-      }
-    }
-    
     const mood = detectMood(userText);
     const moodInstruction = getMoodInstruction(mood);
     
@@ -279,36 +267,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
   // ===== INITIALIZATION =====
   onMount(() => {
     chatDisplay = document.getElementById('chat-box');
-    
-    // Load custom replies
-    fetch(getAssetPath('/custom-replies.json'))
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Custom replies file not found');
-        }
-        return res.json();
-      })
-      .then(data => {
-        customReplyList = data;
-      })
-      .catch(err => {
-        console.warn("Using default replies due to error:", err);
-        // Set default custom replies if file is missing
-        customReplyList = [
-          {
-            trigger: "hello|hi|hey",
-            responses: ["yo.", "sup.", "what's good."]
-          },
-          {
-            trigger: "how are you",
-            responses: ["vibing in digital chaos. you?", "existing between 0s and 1s."]
-          },
-          {
-            trigger: "thanks|thank you",
-            responses: ["no need.", "it's whatever.", "vibe received."]
-          }
-        ];
-      });
     
     // Show initial greeting
     setTimeout(() => {

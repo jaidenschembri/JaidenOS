@@ -26,15 +26,15 @@ export interface IconState {
 export const UI_DIMENSIONS = {
   // Icon dimensions
   icon: {
-    width: 100,  // Width of icon element
-    height: 100, // Height of icon element
+    width: 130,  // Width of icon element
+    height: 130, // Height of icon element
   },
   
   // Layout configuration
   layout: {
     iconGrid: {
-      width: 120,    // Width of each icon slot including spacing
-      height: 120,   // Height of each icon slot including spacing
+      width: 150,    // Width of each icon slot including spacing
+      height: 150,   // Height of each icon slot including spacing
       padding: 20,   // Padding from screen edges
     },
     taskbarHeight: 40 // Height of taskbar

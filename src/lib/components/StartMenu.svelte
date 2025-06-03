@@ -14,16 +14,20 @@
       url: '/backgrounds/DSC00330-Edit-59391339deded__880.jpg'
     },
     {
-      name: 'Wallhaven 1',
+      name: 'Mystic 2',
       url: '/backgrounds/wallhaven-zywe5j.jpg'
     },
     {
-      name: 'Wallhaven 2',
+      name: 'Mystic 1',
       url: '/backgrounds/wallhaven-zywwky.jpg'
     },
     {
-      name: 'Default Pattern',
-      url: 'none' // Special case for default gradient
+      name: 'Default',
+      url: 'none',
+    },
+    {
+      name: 'Black Hole',
+      url: '/backgrounds/solar-eclipse.jpg'
     }
   ];
 

@@ -118,7 +118,6 @@
     justify-content: space-between;
     z-index: 999;
     box-sizing: border-box;
-    overflow: hidden !important;
     height: 40px;
   }
 
@@ -312,9 +311,9 @@
 
   /* ===== IPOD TOGGLE BUTTON ===== */
   #ipod-toggle-btn {
-    background-color: #c0c0c0;
-    border: 2px outset #f0f0f0;
-    padding: 4px;
+    background: #dcdcdc;
+    border: 2px solid #999;
+    padding: 0 6px;
     margin-right: 6px;
     cursor: pointer;
     display: flex;
@@ -323,19 +322,34 @@
     height: 28px;
     width: 32px;
     font-family: 'VT323', monospace;
+    border-radius: 2px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    box-shadow:
+      inset 1px 1px 0 #fff,
+      inset -1px -1px 0 #888,
+      2px 2px 0 #444;
+    transition: background 0.2s, border 0.2s, box-shadow 0.1s ease-in-out;
   }
 
   #ipod-toggle-btn:hover {
-    background-color: #d0d0d0;
+    background: #dcdcdc;
   }
 
   #ipod-toggle-btn:active {
-    border-style: inset;
+    background: #aaa;
+    border-color: #777;
+    box-shadow:
+      inset -1px -1px 0 #fff,
+      inset 1px 1px 0 #555;
   }
 
   #ipod-toggle-btn.active {
-    background-color: #a0a0a0;
-    border-style: inset;
+    background: #aaa;
+    border-color: #777;
+    box-shadow:
+      inset -1px -1px 0 #fff,
+      inset 1px 1px 0 #555;
   }
 
   .ipod-toggle-icon {
@@ -383,28 +397,30 @@
 
   /* ===== MOBILE RESPONSIVE STYLES ===== */
   @media (max-width: 768px) {
+    /* Keep taskbar exactly like desktop */
     .taskbar {
-      padding: 2px 8px;
-      height: 36px;
+      padding: 4px 10px;
+      height: 40px;
     }
 
     .taskbar-left {
-      gap: 6px;
+      gap: 12px;
     }
 
     .taskbar-apps {
-      gap: 4px;
-      padding-right: 6px;
+      gap: 8px;
+      padding-right: 10px;
     }
 
-    /* Mobile taskbar buttons - icon only */
+    /* Mobile taskbar buttons - icon only but same size and styling as desktop */
     .taskbar-button {
-      width: 36px;
-      min-width: 36px;
-      max-width: 36px;
-      height: 32px;
-      padding: 2px;
+      width: 40px;
+      min-width: 40px;
+      max-width: 40px;
+      height: 28px;
+      padding: 0 6px;
       justify-content: center;
+      /* All other styles inherited from desktop */
     }
 
     .taskbar-button span {
@@ -412,59 +428,60 @@
     }
 
     .taskbar-button .taskbar-icon-img {
-      width: 28px;
-      height: 28px;
+      width: 33px;
+      height: 33px;
       margin-left: 0;
     }
 
-    /* Mobile system tray */
+    /* Keep system tray exactly like desktop */
     .taskbar-right-box {
-      padding: 1px 4px;
-      gap: 4px;
+      padding: 2px 8px;
+      gap: 6px;
     }
 
     .taskbar-clock {
-      font-size: 12px;
-      margin-top: 2px;
+      font-size: 14px;
+      margin-top: 4px;
     }
 
     .tray-icon {
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
     }
 
     .taskbar-divider {
-      width: 2px;
-      height: 16px;
-      margin: 0 2px;
+      width: 3px;
+      height: 20px;
+      margin: 0 4px;
     }
   }
 
   /* Extra small mobile devices */
   @media (max-width: 480px) {
+    /* Keep everything exactly like desktop except app button width */
     .taskbar {
-      padding: 2px 4px;
+      padding: 4px 10px;
     }
 
     .taskbar-left {
-      gap: 4px;
+      gap: 12px;
     }
 
     .taskbar-apps {
-      gap: 2px;
-      padding-right: 4px;
+      gap: 8px;
+      padding-right: 10px;
     }
 
     .taskbar-button {
-      width: 32px;
-      min-width: 32px;
-      max-width: 32px;
-      height: 30px;
+      width: 36px;
+      min-width: 36px;
+      max-width: 36px;
+      height: 28px;
     }
 
     .taskbar-button .taskbar-icon-img {
-      width: 24px;
-      height: 24px;
+      width: 33px;
+      height: 33px;
     }
   }
 </style> 
