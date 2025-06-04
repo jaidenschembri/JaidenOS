@@ -134,19 +134,8 @@
     resize: none !important;
   }
 
-  /* Improved scrollbars */
-  .window-content::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .window-content::-webkit-scrollbar-track {
-    background: rgba(192, 192, 192, 0.3);
-  }
-
-  .window-content::-webkit-scrollbar-thumb {
-    background: rgba(136, 136, 136, 0.6);
-    border-radius: 4px;
-  }
+  /* Remove the conflicting global scrollbar styles that override custom component scrollbars */
+  /* Individual components have their own custom retro scrollbar styling */
 
   /* Mobile animations */
   .window.opening {

@@ -285,9 +285,6 @@
     width: 100%;
     height: calc(100vh - 40px);
     z-index: 1;
-    background-image: 
-      radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
-    background-size: 20px 20px;
     background-color: inherit;
   }
 </style>

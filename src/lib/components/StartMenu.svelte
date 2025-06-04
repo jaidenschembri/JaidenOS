@@ -11,22 +11,21 @@
 
   // Background options (same as DesktopContextMenu)
   const backgrounds = [
-    // Custom local backgrounds:
     {
-      name: 'Custom Photo',
-      url: getAssetPath('/backgrounds/DSC00330-Edit-59391339deded__880.jpg')
+      name: 'Default 1',
+      url: getAssetPath('/backgrounds/swag.jpg')
     },
     {
-      name: 'Mystic 2',
-      url: getAssetPath('/backgrounds/wallhaven-zywe5j.jpg')
+      name: 'Default 2',
+      url: getAssetPath('/backgrounds/windows.jpg')
     },
     {
       name: 'Mystic 1',
       url: getAssetPath('/backgrounds/wallhaven-zywwky.jpg')
     },
     {
-      name: 'Default',
-      url: 'none',
+      name: 'Mystic 2',
+      url: getAssetPath('/backgrounds/wallhaven-zywe5j.jpg')
     },
     {
       name: 'Black Hole',
@@ -40,26 +39,13 @@
     // Detect if we're on mobile (specifically iOS Safari)
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
     
-    if (backgroundUrl === 'none') {
-      // Restore default gradient pattern
-      document.body.style.backgroundImage = `
-        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 2px, transparent 2px),
-        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 2px, transparent 2px),
-        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%)
-      `;
-      document.body.style.backgroundSize = '40px 40px, 40px 40px, 20px 20px, 20px 20px';
-      document.body.style.backgroundPosition = '0 0, 20px 20px, 0 0, 10px 10px';
-      document.body.style.backgroundAttachment = 'scroll';
-    } else {
-      // Apply new background image
-      document.body.style.backgroundImage = `url("${backgroundUrl}")`;
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundPosition = 'center';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      // Use 'scroll' on mobile devices to avoid Safari issues, 'fixed' on desktop
-      document.body.style.backgroundAttachment = isMobile ? 'scroll' : 'fixed';
-    }
+    // Apply new background image
+    document.body.style.backgroundImage = `url("${backgroundUrl}")`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    // Use 'scroll' on mobile devices to avoid Safari issues, 'fixed' on desktop
+    document.body.style.backgroundAttachment = isMobile ? 'scroll' : 'fixed';
     
     dispatch('close');
   }

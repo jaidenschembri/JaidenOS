@@ -5,6 +5,29 @@
   box-sizing: border-box;
 }
 
+/* ===== SCROLLBAR RESET ===== */
+/* Hide default scrollbars on body and html to prevent double scrollbars */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure scrolling is still enabled */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide unstyled scrollbars on window containers */
+.window::-webkit-scrollbar {
+  display: none;
+}
+
+.window {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
 /* ===== BODY & BACKGROUND ===== */
 body {
   font-family: 'VT323', monospace;
