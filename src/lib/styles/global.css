@@ -124,7 +124,7 @@ body.classic-theme {
 .window-content {
   padding: 10px;
   height: calc(100% - 30px);
-  overflow: auto;
+  overflow: hidden;
   position: relative;
 }
 

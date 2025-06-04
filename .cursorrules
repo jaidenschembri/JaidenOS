@@ -1,35 +1,67 @@
 {
     "version": 1,
     "project": {
-        "name": "Desktop OS Theme",
-        "description": "A customizable desktop operating system theme project that allows users to modify and personalize their desktop environment. This project focuses on creating a modern, user-friendly interface with customizable themes and components.",
-        "type": "desktop-application",
+        "name": "Desktop OS Theme (Jaiden OS)",
+        "description": "A fully interactive web-based desktop operating system simulator built with SvelteKit that recreates the classic Windows 95/98 experience in the browser. This project features a complete desktop environment with draggable windows, a functional taskbar, start menu, desktop icons, context menus, and authentic Windows sound effects. Users can interact with various applications including a chatbot, audio oscillator, numerology calculator, guestbook, and portfolio viewer. The OS simulator includes authentic boot screens, window management, icon positioning, and responsive design for both desktop and mobile devices. It's deployed on GitHub Pages and serves as both a nostalgic throwback and a showcase of modern web development techniques.",
+        "type": "web-application",
         "tags": [
-            "desktop",
-            "theme",
-            "customization",
-            "ui",
-            "ux"
+            "desktop-simulator",
+            "windows-95",
+            "retro-os",
+            "interactive-ui",
+            "web-desktop",
+            "sveltekit",
+            "nostalgic-computing"
         ],
         "features": [
-            "Custom theme support",
-            "User interface customization",
-            "Desktop environment modifications",
-            "Theme switching capabilities",
-            "Modern UI components"
+            "Complete desktop environment simulation",
+            "Draggable and resizable windows with authentic window controls",
+            "Functional taskbar with window management and system tray",
+            "Interactive start menu with application launcher",
+            "Desktop icons with drag-and-drop functionality",
+            "Right-click context menus throughout the interface",
+            "Authentic Windows 95/98 boot screen with loading animation",
+            "Multiple themed applications (chatbot, oscillator, numerology, etc.)",
+            "Windows sound effects (startup, clicks, notifications)",
+            "Mobile-responsive design with touch interactions",
+            "GitHub Pages deployment with automated CI/CD"
         ],
         "technologies": [
-            "Electron",
-            "React",
-            "TypeScript",
-            "CSS/SCSS"
+            "SvelteKit",
+            "TypeScript", 
+            "CSS/SCSS",
+            "Vite",
+            "GitHub Actions",
+            "GitHub Pages"
         ],
+        "architecture": {
+            "framework": "SvelteKit with static adapter for GitHub Pages deployment",
+            "state_management": "Svelte stores for window management, icon positioning, and application state",
+            "styling": "CSS with authentic Windows 95/98 design system including borders, shadows, and color schemes",
+            "components": "Modular component architecture with reusable window wrappers, draggable elements, and UI controls",
+            "routing": "SvelteKit file-based routing with single-page application behavior",
+            "assets": "Static asset management with GitHub Pages base path configuration",
+            "deployment": "Automated GitHub Actions workflow for build and deployment to GitHub Pages"
+        },
         "structure": {
-            "src": "Source code and components",
-            "themes": "Theme definitions and assets",
-            "components": "Reusable UI components",
-            "styles": "Global styles and theme variables"
-        }
+            "src/routes": "Main application pages and layout components",
+            "src/lib/components": "Reusable UI components (windows, taskbar, icons, menus)",
+            "src/lib/stores": "Svelte stores for state management (windows, icons, themes)",
+            "src/lib/utils": "Utility functions for sounds, positioning, and asset management", 
+            "src/lib/types": "TypeScript type definitions for components and stores",
+            "src/lib/styles": "Global styles and theme variables",
+            "static": "Static assets including icons, backgrounds, and sound files",
+            "build": "Production build output for GitHub Pages deployment"
+        },
+        "key_components": {
+            "WindowWrapper": "Base component for all draggable, resizable windows with title bars and controls",
+            "Taskbar": "Bottom taskbar with start button, window list, and system tray",
+            "StartMenu": "Hierarchical start menu with application shortcuts and system options",
+            "DraggableIcon": "Desktop icons that can be repositioned and launched",
+            "DesktopContextMenu": "Right-click context menu for desktop interactions",
+            "Application_Windows": "Individual app windows (ChatbotWindow, OscillatorWindow, etc.)"
+        },
+        "live_demo": "https://jaidenschembri.github.io/jaiden-os"
     },
     "editor": {
         "formatOnSave": true,
