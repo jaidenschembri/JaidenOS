@@ -9,7 +9,6 @@
 body {
   font-family: 'VT323', monospace;
   background-color: #008080;
-  background-image: url('/backgrounds/wallhaven-zywe5j.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -24,17 +23,14 @@ body {
 /* ===== THEME VARIATIONS ===== */
 body.desktop-theme {
   background-color: #008080;
-  background-image: url('/backgrounds/wallhaven-zywe5j.jpg');
 }
 
 body.win98-theme {
   background-color: #008080;
-  background-image: url('/backgrounds/wallhaven-zywwky.jpg');
 }
 
 body.classic-theme {
   background-color: #336699;
-  background-image: url('/backgrounds/DSC00330-Edit-59391339deded__880.jpg');
 }
 
 /* ===== WINDOW COMPONENTS ===== */

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import { WindowsSounds } from '$lib/utils';
+  import { getAssetPath } from '$lib/utils/assets';
   
   const dispatch = createEventDispatcher();
   
@@ -15,15 +16,15 @@
     // Custom local backgrounds:
     {
       name: 'Custom Photo',
-      url: '/backgrounds/DSC00330-Edit-59391339deded__880.jpg'
+      url: getAssetPath('/backgrounds/DSC00330-Edit-59391339deded__880.jpg')
     },
     {
       name: 'Mystic 2',
-      url: '/backgrounds/wallhaven-zywe5j.jpg'
+      url: getAssetPath('/backgrounds/wallhaven-zywe5j.jpg')
     },
     {
       name: 'Mystic 1',
-      url: '/backgrounds/wallhaven-zywwky.jpg'
+      url: getAssetPath('/backgrounds/wallhaven-zywwky.jpg')
     },
     {
       name: 'Default',
@@ -31,7 +32,7 @@
     },
     {
       name: 'Black Hole',
-      url: '/backgrounds/solar-eclipse.jpg'
+      url: getAssetPath('/backgrounds/solar-eclipse.jpg')
     }
   ];
   

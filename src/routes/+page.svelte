@@ -3,6 +3,7 @@
   import { windowsStore, openWindow, closeWindow } from '$lib/stores/windows';
   import { iconsStore, positionIcons, updateIconState } from '$lib/stores/icons';
   import { WindowsSounds } from '$lib/utils';
+  import { getAssetPath } from '$lib/utils/assets';
   import type { IconState } from '$lib/types';
   
   // Components
@@ -66,6 +67,14 @@
   }
 
   onMount(() => {
+    // Set initial background image with correct path for GitHub Pages
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    document.body.style.backgroundImage = `url("${getAssetPath('/backgrounds/wallhaven-zywe5j.jpg')}")`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = isMobile ? 'scroll' : 'fixed';
+    
     // Show boot screen for 2 seconds, then play startup sound
     setTimeout(() => {
       showBootScreen = false;
