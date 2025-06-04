@@ -22,7 +22,6 @@
   let contextMenuVisible = false;
   let contextMenuPosition = { x: 0, y: 0 };
   let icons: Record<string, IconState> = {};
-  let showBootScreen = true;
   
   // Subscribe to icons store
   const unsubscribeIcons = iconsStore.subscribe(value => {
@@ -75,12 +74,6 @@
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = isMobile ? 'scroll' : 'fixed';
     
-    // Show boot screen for 2 seconds, then play startup sound
-    setTimeout(() => {
-      showBootScreen = false;
-      WindowsSounds.playStartupSound();
-    }, 2000);
-
     // Position icons on desktop
     positionIcons();
     
@@ -110,27 +103,6 @@
     };
   });
 </script>
-
-<!-- Boot Screen -->
-{#if showBootScreen}
-  <div class="boot-screen">
-    <div class="boot-content">
-      <div class="windows-logo">
-        <div class="logo-square red"></div>
-        <div class="logo-square green"></div>
-        <div class="logo-square blue"></div>
-        <div class="logo-square yellow"></div>
-      </div>
-      <h1 class="boot-title">Windows 95</h1>
-      <div class="boot-loading">
-        <div class="loading-bar">
-          <div class="loading-progress"></div>
-        </div>
-        <p>Starting Windows...</p>
-      </div>
-    </div>
-  </div>
-{/if}
 
 <!-- Desktop Icons -->
 <div class="desktop-icons">
@@ -177,90 +149,6 @@
 {/if}
 
 <style>
-  /* Boot Screen */
-  .boot-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    animation: fadeOut 0.5s ease-in-out 1.5s forwards;
-  }
-
-  .boot-content {
-    text-align: center;
-    color: #fff;
-    font-family: 'VT323', monospace;
-  }
-
-  .windows-logo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px;
-    animation: logoSpin 2s ease-in-out infinite;
-  }
-
-  .logo-square {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-  }
-
-  .logo-square.red { background: #ff0000; }
-  .logo-square.green { background: #00ff00; }
-  .logo-square.blue { background: #0000ff; }
-  .logo-square.yellow { background: #ffff00; }
-
-  .boot-title {
-    font-size: 32px;
-    margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  }
-
-  .boot-loading {
-    margin-top: 30px;
-  }
-
-  .loading-bar {
-    width: 200px;
-    height: 20px;
-    background: #333;
-    border: 2px solid #666;
-    margin: 0 auto 10px;
-    overflow: hidden;
-  }
-
-  .loading-progress {
-    height: 100%;
-    background: linear-gradient(90deg, #0080ff, #00ff80);
-    width: 0%;
-    animation: loadingProgress 2s ease-in-out forwards;
-  }
-
-  @keyframes logoSpin {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(180deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  @keyframes loadingProgress {
-    0% { width: 0%; }
-    100% { width: 100%; }
-  }
-
-  @keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; display: none; }
-  }
-
   /* Desktop icons */
   .desktop-icons {
     position: absolute;

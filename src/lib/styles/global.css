@@ -124,8 +124,38 @@ body.classic-theme {
 .window-content {
   padding: 10px;
   height: calc(100% - 30px);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
+}
+
+/* Custom scrollbar for window-content */
+.window-content::-webkit-scrollbar {
+  width: 16px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 1px inset #888;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px outset #888;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: #d0d0d0;
+}
+
+.window-content::-webkit-scrollbar-button {
+  background: #c0c0c0;
+  border: 1px outset #888;
+  height: 16px;
+}
+
+.window-content::-webkit-scrollbar-button:hover {
+  background: #d0d0d0;
 }
 
 /* ===== ICON COMPONENTS ===== */

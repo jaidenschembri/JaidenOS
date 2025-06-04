@@ -188,7 +188,6 @@
   .guestbook-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
     padding: 15px;
     background-color: #c0c0c0;
     box-sizing: border-box;
@@ -254,7 +253,7 @@
     font-family: 'VT323', monospace;
     font-size: 14px;
     color: #000;
-    height: calc(100% - 160px);
+    min-height: 200px;
   }
   
   .entry {
@@ -278,7 +277,7 @@
     font-weight: normal;
   }
 
-  /* Retro scrollbar styling */
+  /* Retro scrollbar styling for entries list only */
   .guestbook-entries::-webkit-scrollbar {
     width: 16px;
   }

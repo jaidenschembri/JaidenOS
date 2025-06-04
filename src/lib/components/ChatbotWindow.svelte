@@ -301,7 +301,6 @@ You only show love to people who earn it. If they're disrespectful, you throw it
     flex: 1;
     display: flex;
     flex-direction: column;
-    height: 100%;
     padding: 10px;
     gap: 10px;
   }
@@ -379,7 +378,7 @@ You only show love to people who earn it. If they're disrespectful, you throw it
     opacity: 0.7;
   }
 
-  /* Retro scrollbar styling */
+  /* Retro scrollbar styling for chat display only */
   .chat-display::-webkit-scrollbar {
     width: 16px;
   }

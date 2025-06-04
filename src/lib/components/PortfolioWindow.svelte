@@ -30,60 +30,57 @@
   on:open={handleWindowOpen}
   on:close={handleWindowClose}
 >
-  <div class="portfolio-scroll-wrapper">
-    <div class="portfolio-window">
-      <div class="section">
-        <h4 class="section-title">Graphics</h4>
-        <div class="gallery-grid">
-          <img src={getAssetPath('/icons/archive/graphics/bug.png')}>
-          <img src={getAssetPath('/icons/archive/graphics/japan.png')}>
-          <img src={getAssetPath('/icons/archive/graphics/jc.png')}>
-          <img src={getAssetPath('/icons/archive/graphics/KING.png')}>
-          <img src={getAssetPath('/icons/archive/graphics/storm.png')}>
-          <img src={getAssetPath('/icons/archive/graphics/swag.png')}>
-          <img src={getAssetPath('/icons/archive/graphics/vinylenvy1.png')}>
-        </div>
-      </div>
-
-      <div class="section">
-        <h4 class="section-title">Posters / Covers</h4>
-        <div class="gallery-grid">
-          <img src={getAssetPath('/icons/archive/posters/cassette.png')}>
-          <img src={getAssetPath('/icons/archive/posters/concert.png')}>
-          <img src={getAssetPath('/icons/archive/posters/flowers-1.png')}>
-          <img src={getAssetPath('/icons/archive/posters/flowers-2.png')}>
-          <img src={getAssetPath('/icons/archive/posters/flowers-3.png')}>
-          <img src={getAssetPath('/icons/archive/posters/flowers-4.png')}>
-          <img src={getAssetPath('/icons/archive/posters/hard2reach1.png')}>
-          <img src={getAssetPath('/icons/archive/posters/palerider.png')}>
-          <img src={getAssetPath('/icons/archive/posters/patty.jpg')}>
-          <img src={getAssetPath('/icons/archive/posters/poster.png')}>
-        </div>
-      </div>
-
-      <div class="section">
-        <h4 class="section-title">Apparel</h4>
-        <div class="gallery-grid">
-          <img src={getAssetPath('/icons/archive/apparel/bikini.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/crucifix.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/hat2.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/hoodie.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/mollino.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/shaggs.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/vintage-1.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/vintage-2.png')}>
-          <img src={getAssetPath('/icons/archive/apparel/vintage-3.png')}>
-        </div>
-      </div>
-
-      <div class="section">
-        <h4 class="section-title">Objects</h4>
-        <div class="gallery-grid">
-          <img src={getAssetPath('/icons/archive/objects/table.jpg')}>
-        </div>
+  <div class="portfolio-window">
+    <div class="section">
+      <h4 class="section-title">Graphics</h4>
+      <div class="gallery-grid">
+        <img src={getAssetPath('/icons/archive/graphics/bug.png')}>
+        <img src={getAssetPath('/icons/archive/graphics/japan.png')}>
+        <img src={getAssetPath('/icons/archive/graphics/jc.png')}>
+        <img src={getAssetPath('/icons/archive/graphics/KING.png')}>
+        <img src={getAssetPath('/icons/archive/graphics/storm.png')}>
+        <img src={getAssetPath('/icons/archive/graphics/swag.png')}>
+        <img src={getAssetPath('/icons/archive/graphics/vinylenvy1.png')}>
       </div>
     </div>
-    <div class="portfolio-fade"></div>
+
+    <div class="section">
+      <h4 class="section-title">Posters / Covers</h4>
+      <div class="gallery-grid">
+        <img src={getAssetPath('/icons/archive/posters/cassette.png')}>
+        <img src={getAssetPath('/icons/archive/posters/concert.png')}>
+        <img src={getAssetPath('/icons/archive/posters/flowers-1.png')}>
+        <img src={getAssetPath('/icons/archive/posters/flowers-2.png')}>
+        <img src={getAssetPath('/icons/archive/posters/flowers-3.png')}>
+        <img src={getAssetPath('/icons/archive/posters/flowers-4.png')}>
+        <img src={getAssetPath('/icons/archive/posters/hard2reach1.png')}>
+        <img src={getAssetPath('/icons/archive/posters/palerider.png')}>
+        <img src={getAssetPath('/icons/archive/posters/patty.jpg')}>
+        <img src={getAssetPath('/icons/archive/posters/poster.png')}>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4 class="section-title">Apparel</h4>
+      <div class="gallery-grid">
+        <img src={getAssetPath('/icons/archive/apparel/bikini.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/crucifix.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/hat2.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/hoodie.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/mollino.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/shaggs.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/vintage-1.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/vintage-2.png')}>
+        <img src={getAssetPath('/icons/archive/apparel/vintage-3.png')}>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4 class="section-title">Objects</h4>
+      <div class="gallery-grid">
+        <img src={getAssetPath('/icons/archive/objects/table.jpg')}>
+      </div>
+    </div>
   </div>
 </WindowWrapper>
 
@@ -91,62 +88,13 @@
   /* ===== PORTFOLIO COMPONENT ===== */
   /* Styling for the portfolio window and gallery */
 
-  /* ===== WINDOW CONTAINER ===== */
-  :global(#window-portfolio) {
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    width: 800px;
-    height: 600px;
-    max-width: none;
-    max-height: none;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    background: #e0e0e0;
-    z-index: 100;
-    box-sizing: border-box;
-    pointer-events: auto;
-  }
-
-  /* ===== WINDOW HEADER ===== */
-  :global(.window-header) {
-    background: #c0c0c0;
-    padding: 6px 10px;
-    font-family: 'VT323', monospace;
-    font-size: 14px;
-    border-bottom: 1px solid #666;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    top: 0;
-    z-index: 10;
-    pointer-events: auto;
-    cursor: move !important;
-  }
-
-  /* ===== WINDOW CONTENT ===== */
-  :global(.window-content) {
-    flex: 1;
-    overflow-y: scroll;
-    box-sizing: border-box;
-  }
-
   /* ===== PORTFOLIO LAYOUT ===== */
-  .portfolio-scroll-wrapper {
-    position: relative;
-    height: 100%;
-    overflow-y: auto;
-    padding: 20px;
-    background-color: #c0c0c0;
-  }
-  
   .portfolio-window {
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    background-color: #c0c0c0;
   }
 
   /* ===== PORTFOLIO SECTIONS ===== */
@@ -197,32 +145,5 @@
     pointer-events: none;
   }
 
-  /* Retro scrollbar styling */
-  .portfolio-scroll-wrapper::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  .portfolio-scroll-wrapper::-webkit-scrollbar-track {
-    background: #c0c0c0;
-    border: 1px inset #888;
-  }
-
-  .portfolio-scroll-wrapper::-webkit-scrollbar-thumb {
-    background: #c0c0c0;
-    border: 1px outset #888;
-  }
-
-  .portfolio-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-    background: #d0d0d0;
-  }
-
-  .portfolio-scroll-wrapper::-webkit-scrollbar-button {
-    background: #c0c0c0;
-    border: 1px outset #888;
-    height: 16px;
-  }
-
-  .portfolio-scroll-wrapper::-webkit-scrollbar-button:hover {
-    background: #d0d0d0;
-  }
+  /* Remove the scrollbar styles since window-content now handles it */
 </style> 

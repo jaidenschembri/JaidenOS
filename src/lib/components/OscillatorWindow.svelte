@@ -413,7 +413,6 @@
     box-sizing: border-box;
     font-size: 16px;
     background-color: #c0c0c0;
-    overflow-y: auto;
     gap: 15px;
   }
 
@@ -515,34 +514,5 @@
   
   #visualizerToggle {
     margin-bottom: 10px;
-  }
-  
-  /* Retro scrollbar styling */
-  .oscillator-clean::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  .oscillator-clean::-webkit-scrollbar-track {
-    background: #c0c0c0;
-    border: 1px inset #888;
-  }
-
-  .oscillator-clean::-webkit-scrollbar-thumb {
-    background: #c0c0c0;
-    border: 1px outset #888;
-  }
-
-  .oscillator-clean::-webkit-scrollbar-thumb:hover {
-    background: #d0d0d0;
-  }
-
-  .oscillator-clean::-webkit-scrollbar-button {
-    background: #c0c0c0;
-    border: 1px outset #888;
-    height: 16px;
-  }
-
-  .oscillator-clean::-webkit-scrollbar-button:hover {
-    background: #d0d0d0;
   }
 </style> 

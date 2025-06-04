@@ -218,7 +218,6 @@
   .numerology-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
     box-sizing: border-box;
   }
   
@@ -262,40 +261,10 @@
     background-color: white;
     border: 2px inset #888;
     padding: 15px;
-    overflow-y: auto;
     margin: 0 15px 15px 15px;
     font-family: 'VT323', monospace;
     font-size: 14px;
     color: #000;
     line-height: 1.4;
-  }
-
-  /* Retro scrollbar styling to match other windows */
-  .numerology-output::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  .numerology-output::-webkit-scrollbar-track {
-    background: #c0c0c0;
-    border: 1px inset #888;
-  }
-
-  .numerology-output::-webkit-scrollbar-thumb {
-    background: #c0c0c0;
-    border: 1px outset #888;
-  }
-
-  .numerology-output::-webkit-scrollbar-thumb:hover {
-    background: #d0d0d0;
-  }
-
-  .numerology-output::-webkit-scrollbar-button {
-    background: #c0c0c0;
-    border: 1px outset #888;
-    height: 16px;
-  }
-
-  .numerology-output::-webkit-scrollbar-button:hover {
-    background: #d0d0d0;
   }
 </style> 
