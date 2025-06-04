@@ -12,18 +12,8 @@
   let isDragging = false;
   let dragOffset = { x: 0, y: 0 };
   let windowElement: HTMLElement;
-  let currentZIndex = 100; // Default z-index
   
   const dispatch = createEventDispatcher();
-  
-  // Subscribe to get highest z-index
-  windowsStore.subscribe(windows => {
-    // Find the highest z-index among all windows
-    currentZIndex = Object.values(windows).reduce(
-      (max, win) => win.zIndex > max ? win.zIndex : max,
-      100
-    );
-  });
   
   function handleMouseDown(event: MouseEvent): void {
     // Only start dragging from the header
@@ -165,7 +155,6 @@
   class="window" 
   class:hidden={!windowState.isOpen || windowState.isMinimized}
   class:maximized={windowState.isMaximized}
-  class:active-window={windowState.zIndex === currentZIndex}
   class:mobile={isMobileDevice()}
   style="
     z-index: {windowState.zIndex}; 
