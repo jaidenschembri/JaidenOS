@@ -31,6 +31,11 @@ const APPS_CONFIG = {
     icon: getAssetPath('/icons/folder-icon.png'), 
     openIcon: getAssetPath('/icons/folder-icon-open.png') 
   },
+  'physics-game': { 
+    title: 'Physics', 
+    icon: getAssetPath('/icons/folder-icon.png'), 
+    openIcon: getAssetPath('/icons/folder-icon-open.png') 
+  },
 };
 
 // Initial icons state

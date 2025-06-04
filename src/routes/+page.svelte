@@ -14,6 +14,7 @@
   import NumerologyWindow from '$lib/components/NumerologyWindow.svelte';
   import GuestbookWindow from '$lib/components/GuestbookWindow.svelte';
   import PortfolioWindow from '$lib/components/PortfolioWindow.svelte';
+  import PhysicsGameWindow from '$lib/components/PhysicsGameWindow.svelte';
   import Taskbar from '$lib/components/Taskbar.svelte';
   import StartMenu from '$lib/components/StartMenu.svelte';
   import DesktopContextMenu from '$lib/components/DesktopContextMenu.svelte';
@@ -130,6 +131,7 @@
 <NumerologyWindow on:open={() => handleWindowOpen('numerology')} on:close={() => handleWindowClose('numerology')} />
 <GuestbookWindow on:open={() => handleWindowOpen('guestbook')} on:close={() => handleWindowClose('guestbook')} />
 <PortfolioWindow on:open={() => handleWindowOpen('window-portfolio')} on:close={() => handleWindowClose('window-portfolio')} />
+<PhysicsGameWindow on:open={() => handleWindowOpen('physics-game')} on:close={() => handleWindowClose('physics-game')} />
 
 <!-- Taskbar -->
 <Taskbar on:toggleStartMenu={toggleStartMenu} startMenuOpen={startMenuVisible} />

@@ -64,6 +64,16 @@ const initialWindows: Record<string, WindowState> = {
     size: { width: 400, height: 300 },
     isMaximized: false,
     isMinimized: false
+  },
+  'physics-game': {
+    id: 'physics-game',
+    title: 'PHYSICS',
+    isOpen: false,
+    zIndex: 100,
+    position: { x: 250, y: 100 },
+    size: { width: 620, height: 520 },
+    isMaximized: false,
+    isMinimized: false
   }
 };
 
