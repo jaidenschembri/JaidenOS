@@ -135,15 +135,5 @@
     padding: 2px;
   }
   
-  .portfolio-fade {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background: linear-gradient(transparent, #c0c0c0);
-    pointer-events: none;
-  }
-
   /* Remove the scrollbar styles since window-content now handles it */
 </style> 

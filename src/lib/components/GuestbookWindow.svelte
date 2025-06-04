@@ -170,7 +170,7 @@
       <button type="submit">Sign Guestbook</button>
     </form>
     <hr />
-    <ul id="entriesList" class="guestbook-entries">
+    <ul id="entriesList" class="guestbook-entries retro-scrollbar">
       {#each entries as entry (entry.id)}
         <li class="entry">
           <div class="entry-header">
@@ -277,32 +277,4 @@
     font-weight: normal;
   }
 
-  /* Retro scrollbar styling for entries list only */
-  .guestbook-entries::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  .guestbook-entries::-webkit-scrollbar-track {
-    background: #c0c0c0;
-    border: 1px inset #888;
-  }
-
-  .guestbook-entries::-webkit-scrollbar-thumb {
-    background: #c0c0c0;
-    border: 1px outset #888;
-  }
-
-  .guestbook-entries::-webkit-scrollbar-thumb:hover {
-    background: #d0d0d0;
-  }
-
-  .guestbook-entries::-webkit-scrollbar-button {
-    background: #c0c0c0;
-    border: 1px outset #888;
-    height: 16px;
-  }
-
-  .guestbook-entries::-webkit-scrollbar-button:hover {
-    background: #d0d0d0;
-  }
 </style> 

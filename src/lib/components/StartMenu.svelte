@@ -247,8 +247,6 @@
       inset 1px 1px 0 #fff,
       inset -1px -1px 0 #404040,
       2px 2px 4px rgba(0, 0, 0, 0.3);
-    font-family: 'VT323', monospace;
-    font-size: 11px;
     color: #000;
     padding: 2px 0;
     width: 110px;

@@ -19,14 +19,11 @@
 
   /* Window optimizations */
   .window {
-    min-width: calc(100vw - 20px) !important;
-    max-width: calc(100vw - 10px) !important;
     min-height: 200px;
     max-height: calc(100vh - 60px) !important;
     left: 5px !important;
     top: 10px !important;
     right: 5px !important;
-    width: calc(100vw - 10px) !important;
     border-radius: 4px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
@@ -194,9 +191,6 @@
 
 /* ===== HIGH DPI MOBILE DISPLAYS ===== */
 @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
-  .icon-title span {
-    font-size: 12px;
-  }
 }
 
 /* ===== MOBILE ACCESSIBILITY ===== */
@@ -213,8 +207,6 @@
 /* ===== MOBILE ICON GRID ===== */
 @media (max-width: 768px) {
   .desktop-icons {
-    --mobile-icon-width: 110px;
-    --mobile-icon-height: 110px;
     --mobile-icon-padding: 10px;
   }
 } 

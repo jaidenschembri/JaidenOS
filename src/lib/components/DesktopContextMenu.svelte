@@ -202,8 +202,6 @@
       2px 2px 4px rgba(0, 0, 0, 0.3);
     min-width: 120px;
     z-index: 10001;
-    font-family: 'VT323', monospace;
-    font-size: 14px;
   }
   
   .submenu li {

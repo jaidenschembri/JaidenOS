@@ -192,7 +192,7 @@
       </button>
     </div>
   </div>
-  <div class="window-content">
+  <div class="window-content retro-scrollbar">
     <slot></slot>
   </div>
 </div>

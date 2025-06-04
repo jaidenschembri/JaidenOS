@@ -282,7 +282,7 @@ You only show love to people who earn it. If they're disrespectful, you throw it
   on:close={handleWindowClose}
 >
   <div class="chatbot-box">
-    <div id="chat-box" class="chat-display"></div>
+    <div id="chat-box" class="chat-display retro-scrollbar"></div>
     <div class="chat-controls">
       <input 
         id="user-input" 
@@ -376,34 +376,5 @@ You only show love to people who earn it. If they're disrespectful, you throw it
   
   .typing {
     opacity: 0.7;
-  }
-
-  /* Retro scrollbar styling for chat display only */
-  .chat-display::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  .chat-display::-webkit-scrollbar-track {
-    background: #c0c0c0;
-    border: 1px inset #888;
-  }
-
-  .chat-display::-webkit-scrollbar-thumb {
-    background: #c0c0c0;
-    border: 1px outset #888;
-  }
-
-  .chat-display::-webkit-scrollbar-thumb:hover {
-    background: #d0d0d0;
-  }
-
-  .chat-display::-webkit-scrollbar-button {
-    background: #c0c0c0;
-    border: 1px outset #888;
-    height: 16px;
-  }
-
-  .chat-display::-webkit-scrollbar-button:hover {
-    background: #d0d0d0;
   }
 </style> 
